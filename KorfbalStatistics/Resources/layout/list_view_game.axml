@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:padding="10dp">
+	<TextView
+		android:text="Home team"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_alignParentTop="true"
+		android:id="@+id/homeTeamText"
+		android:layout_marginLeft="10dp"
+		android:autoText="false"
+		android:textColor="@android:color/background_dark"
+		android:contextClickable="false"
+		android:textIsSelectable="false"
+		android:textSize="20dp"
+		android:textStyle="bold" />
+	<TextView
+		android:text="-"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/homeTeamText"
+		android:id="@+id/seperatorText"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"
+		android:textStyle="bold"
+		android:textSize="20dp"
+		android:textColor="@android:color/black" />
+	<TextView
+		android:text="Away team"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/seperatorText"
+		android:id="@+id/awayTeamText"
+		android:textColor="@android:color/black"
+		android:textStyle="bold"
+		android:textSize="20dp"
+		android:elegantTextHeight="false"
+		android:freezesText="false" />
+	<TextView
+		android:text="W"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:id="@+id/statusText"
+		android:textColor="#ff4caf50"
+		android:textStyle="bold"
+		android:textSize="20dp"
+		android:layout_marginRight="10dp" />
+	<TextView
+		android:text="00-00-0000"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/homeTeamText"
+		android:id="@+id/dateText"
+		android:layout_marginLeft="12dp"
+		android:textStyle="normal"
+		android:textColor="@android:color/black"
+		android:freezesText="false"
+		android:textSize="12dp" />
+	
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:padding="10dp">
+	<TextView
+		android:text="Defence"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/defenceText"
+		android:layout_marginLeft="10dp"
+		android:layout_centerHorizontal="true"
+		android:autoText="false"
+		android:textColor="@android:color/background_dark"
+		android:contextClickable="false"
+		android:textIsSelectable="false"
+		android:textSize="20dp"
+		android:textStyle="bold"
+		android:layout_marginBottom="10dp"
+		android:visibility="gone" 
+		/>
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/defenceText"
+		android:id="@+id/ballIcon">
+		<TextView
+			android:text=""
+			android:drawableStart="@drawable/ic_ball"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/ballIcon1"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:textColor="@android:color/black" />
+		
+		<TextView
+			android:text="0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:id="@+id/ballIconStat"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:textColor="?android:attr/colorAccent" />
+
+	</RelativeLayout>
+	
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/ballIcon"
+		android:layout_below="@id/defenceText"
+		android:id="@+id/turnoverIcon">
+		<TextView
+			android:text=""
+			android:drawableStart="@drawable/ic_assist"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/turnoverIcon1"
+			android:textColor="@android:color/black"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:elegantTextHeight="false"
+			android:freezesText="false" />
+		<TextView
+			android:text="0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:id="@+id/turnoverIconStat"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:textColor="?android:attr/colorAccent" />
+
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/turnoverIcon"
+		android:layout_below="@id/defenceText"
+		android:id="@+id/reboundIcon">
+
+		<TextView
+			android:text=""
+			android:drawableStart="@drawable/ic_rebound"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/reboundIcon1"
+			android:textColor="@android:color/black"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:elegantTextHeight="false"
+			android:freezesText="false" />
+		<TextView
+			android:text="0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:id="@+id/reboundIconStat"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:textColor="?android:attr/colorAccent" />
+	</RelativeLayout>
+
+</RelativeLayout>

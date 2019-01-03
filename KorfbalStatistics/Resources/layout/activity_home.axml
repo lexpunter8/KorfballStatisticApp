@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:minWidth="25px"
+	android:minHeight="25px">
+
+	<android.support.design.widget.FloatingActionButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/addGameButton"
+		android:layout_alignParentBottom="true"
+		android:layout_alignWithParentIfMissing="false"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="24dp"
+		android:src="@drawable/ic_plus_48px"
+		app:fabSize="normal" />
+	<LinearLayout
+		android:orientation="vertical"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:id="@+id/linearLayout1" >
+		<ListView
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_alignParentTop="true"
+			android:id="@+id/gamesListView"
+			android:divider="?android:attr/colorAccent"
+			android:dividerHeight="1px"/>
+		<include
+			layout="@layout/layout_bottom_navbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true" />
+
+	</LinearLayout>
+
+</RelativeLayout>

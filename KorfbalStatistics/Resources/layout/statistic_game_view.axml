@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:minWidth="25px"
+        android:minHeight="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBarLayout1">
+        <ImageButton
+            android:src="@drawable/ic_action_more_vert"
+            android:layout_width="24.0dp"
+            android:layout_height="24.0dp"
+            android:id="@+id/backButton"
+            android:maxHeight="24dp"
+            android:layout_margin="5dp" />
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relativeLayout3"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Home team name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/homeTeamText"
+                android:textStyle="normal|bold"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="5.7dp" />
+            <TextView
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/separator"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@android:color/black" />
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@id/separator"
+                android:id="@+id/homeTeamScore"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/separator"
+                android:id="@+id/awayTeamScore"
+                android:textColor="@android:color/black" />
+            <TextView
+                android:text="Away team name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:id="@+id/awayTeamText"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="5.7dp" />
+            <TextView
+                android:text="H1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gameStatus"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/colorAccent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:layout_centerInParent="false"
+                android:layout_alignParentTop="false" />
+            <Button
+                android:text="End H1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator"
+                android:id="@+id/button1"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/accent" />
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+	<LinearLayout
+		android:orientation="vertical"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/relatievelayout">
+		<LinearLayout
+			android:orientation="horizontal"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/statsView"
+			android:layout_alignParentTop="true"
+			android:padding="20dp">
+			<include
+				layout="@layout/statistic_card_view"
+				android:layout_width="20dp"
+				android:id="@+id/statCardLeft"
+				android:layout_weight="1"
+				android:layout_height="80dp"
+				android:layout_marginRight="10dp" />
+			<include
+				layout="@layout/statistic_card_view"
+				android:layout_width="20dp"
+				android:id="@+id/statCardRight"
+				android:layout_weight="1"
+				android:layout_height="80dp"
+				android:layout_marginLeft="10dp" />
+		</LinearLayout>
+	</LinearLayout>
+	<KorfbalStatistics.CustomviewClasses.RoundedTextViewLayout
+		android:orientation="horizontal"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/currentPlayersLayout">
+	</KorfbalStatistics.CustomviewClasses.RoundedTextViewLayout>
+	<include
+		layout="@layout/stat_input_layout"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_weight="1"
+		android:id="@+id/statsInput"
+		/>
+	<include
+	layout="@layout/layout_bottom_navbar"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:id="@+id/bottomBar"
+	/>
+</LinearLayout>

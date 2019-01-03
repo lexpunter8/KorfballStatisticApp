@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <declare-styleable name="StatisticCardView">
+    <attr name="headerText" format="string"/>
+  </declare-styleable>
+
+  <declare-styleable name="ItemHolderRadioButton">
+    <attr name="itemId" format="string"/>
+  </declare-styleable>
+  <declare-styleable name="ItemHolderRadioButton">
+    <attr name="isSquared" format="boolean"/>
+  </declare-styleable>
+</resources>
