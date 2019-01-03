@@ -60,29 +60,20 @@ namespace KorfbalStatistics.LocalDbModels
                     Guid playerGuid7 = Guid.NewGuid();
                     Guid playerGuid8 = Guid.NewGuid();
                     Guid playerGuid9 = Guid.NewGuid();
-                    connection.Insert(new DbPlayer { Id = playerGuid1, TeamId = teamGuid, Name = "Player1", Number = 1, Abbrevation = "Pl1" });
-                    connection.Insert(new DbPlayer { Id = playerGuid2, TeamId = teamGuid, Name = "Player2", Number = 2, Abbrevation = "Pl2" });
-                    connection.Insert(new DbPlayer { Id = playerGuid3, TeamId = teamGuid, Name = "Player3", Number = 3, Abbrevation = "Pl3" });
-                    connection.Insert(new DbPlayer { Id = playerGuid4, TeamId = teamGuid, Name = "Player4", Number = 4, Abbrevation = "Pl4" });
-                    connection.Insert(new DbPlayer { Id = playerGuid5, TeamId = teamGuid, Name = "Player5", Number = 5, Abbrevation = "Pl5" });
-                    connection.Insert(new DbPlayer { Id = playerGuid6, TeamId = teamGuid, Name = "Player6", Number = 6, Abbrevation = "Pl6" });
-                    connection.Insert(new DbPlayer { Id = playerGuid7, TeamId = teamGuid, Name = "Player7", Number = 7, Abbrevation = "Pl7" });
-                    connection.Insert(new DbPlayer { Id = playerGuid8, TeamId = teamGuid, Name = "Player8", Number = 8, Abbrevation = "Pl8" });
-                    connection.Insert(new DbPlayer { Id = playerGuid9, TeamId = teamGuid, Name = "Player9", Number = 9, Abbrevation = "Pl9" });
+                    connection.Insert(new DbPlayer { Id = playerGuid1, TeamId = teamGuid, Sex = "M", Name = "Jelmer bij de Leij", Number = 1, Abbrevation = "JelB" });
+                    connection.Insert(new DbPlayer { Id = playerGuid2, TeamId = teamGuid, Sex = "M", Name = "Jurjen Veenstra", Number = 2, Abbrevation = "JurV" });
+                    connection.Insert(new DbPlayer { Id = playerGuid3, TeamId = teamGuid, Sex = "M", Name = "Marten van Houten", Number = 3, Abbrevation = "MarH" });
+                    connection.Insert(new DbPlayer { Id = playerGuid4, TeamId = teamGuid, Sex = "M", Name = "Julian Punter", Number = 4, Abbrevation = "JulP" });
+                    connection.Insert(new DbPlayer { Id = playerGuid5, TeamId = teamGuid, Sex = "M", Name = "Bas Haaijer", Number = 5, Abbrevation = "BasH" });
+                    connection.Insert(new DbPlayer { Id = playerGuid6, TeamId = teamGuid, Sex = "F", Name = "Lionne Haaijer", Number = 6, Abbrevation = "LioH" });
+                    connection.Insert(new DbPlayer { Id = playerGuid7, TeamId = teamGuid, Sex = "F", Name = "Maaike van der Schuit", Number = 7, Abbrevation = "MaaS" });
+                    connection.Insert(new DbPlayer { Id = playerGuid8, TeamId = teamGuid, Sex = "F", Name = "Maike de Jong", Number = 8, Abbrevation = "MaiJ" });
+                    connection.Insert(new DbPlayer { Id = playerGuid9, TeamId = teamGuid, Sex = "F", Name = "Aniek Hansma", Number = 9, Abbrevation = "AniH" });
+                    connection.Insert(new DbPlayer { Id = playerGuid9, TeamId = teamGuid, Sex = "F", Name = "Fardau van Houten", Number = 10, Abbrevation = "FarH" });
 
                     Guid gameId = Guid.NewGuid();
                     connection.Insert(new DbGame { Id = gameId, TeamId = teamGuid,
                         Opponent = "TestOpponent", IsHome = true, Date = DateTime.Now });
-
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid1, Function = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid2, Function = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid3, Function = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid4, Function = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid5, Function = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid6, Function = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid7, Function = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid8, Function = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid9, Function = "S" });
 
                     connection.Insert(new DbGoalType { Id = Guid.Parse("b8ba5726-b2bb-4ab8-a52f-fd041fcb0d85"), Name = "Short shot" });
                     connection.Insert(new DbGoalType { Id = Guid.Parse("d8a3a228-94df-4060-af95-8f6a1a1bf93c"), Name = "Medium shot" });
