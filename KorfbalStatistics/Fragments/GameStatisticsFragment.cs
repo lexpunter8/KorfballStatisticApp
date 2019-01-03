@@ -25,8 +25,6 @@ namespace KorfbalStatistics.Fragments
         private LinearLayout statButtonLayout;
         private LinearLayout actionButtonLayout;
         private ViewFlipper statInputSwitcher;
-        private ViewFlipper mainViewFlipper;
-        private Spinner playerSpinner;
         private Button okButton;
         private TextView myHomeScoreTextView, myAwayScoreTextView, myGameStatus;
         private RoundedTextViewLayout myCurrentPlayersLayout;
@@ -79,14 +77,12 @@ namespace KorfbalStatistics.Fragments
             myGameStatus.Text = myViewModel.GameStatus;
 
             myCurrentPlayersLayout = view.FindViewById<RoundedTextViewLayout>(Resource.Id.currentPlayersLayout);
-
             myHomeScoreTextView = view.FindViewById<TextView>(Resource.Id.homeTeamScore);
             myAwayScoreTextView = view.FindViewById<TextView>(Resource.Id.awayTeamScore);
 
             view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.rightActionButton).Click += Bottom_RightButtonClicked;
             view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.undoButton).Click += (e, args) => myViewModel.Undo(); 
            // view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.redoButton).Click += (e, args) => myViewModel.Redo(); 
-            view.FindViewById<RoundedTextViewLayout>(Resource.Id.currentPlayersLayout).Visibility = ViewStates.Gone;
             view.FindViewById<ImageButton>(Resource.Id.leftActionButton).Visibility = ViewStates.Invisible;
             myViewModel.Init();
             

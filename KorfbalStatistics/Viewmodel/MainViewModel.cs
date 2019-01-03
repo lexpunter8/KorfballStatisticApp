@@ -33,7 +33,7 @@ namespace KorfbalStatistics.Viewmodel
         }
         public void Data()
         {
-            myDatabase.createDatabase(true);
+            myDatabase.createDatabase(!LoginHelper.IsFirstLogin);
             myDatabase.TestDb();
             LoggedInUser = myDatabase.selectTable().First();
             Team = DbManager.Instance.PlayerDbManager.GetTeamByUSerId(LoggedInUser.Id);
