@@ -44,7 +44,7 @@ namespace KorfbalStatistics.CustomviewClasses
         {
             TextAlignment = TextAlignment.Center;
             Gravity = GravityFlags.Center;
-            Background = Context.GetDrawable(Resource.Drawable.selectedRadioCircle);
+            Background = Context.GetDrawable(Resource.Drawable.deselectedradioButtonCircle);
             SetTextColor(Android.Graphics.Color.Black);
         }
     }

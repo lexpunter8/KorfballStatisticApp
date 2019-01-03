@@ -13,14 +13,12 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:orientation="vertical">
-			<LinearLayout
+			<include
+				layout="@layout/header_bar_layout"
+				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:layout_height="50dp"
-				android:id="@+id/topBar"
-				android:minWidth="25px"
-				android:minHeight="25px"
-				android:background="@color/primary" >
-			</LinearLayout>
+				android:id="@+id/header"
+			/>
 			<ListView
 				android:minWidth="25px"
 				android:minHeight="25px"
@@ -37,5 +35,6 @@
 		android:layout_alignParentRight="true"
 		android:layout_alignParentEnd="false"
 		android:layout_alignParentBottom="true"
-		android:layout_margin="16dp" />
+		android:layout_margin="16dp"
+		android:src="@drawable/ic_plus_48px" />
 </RelativeLayout>

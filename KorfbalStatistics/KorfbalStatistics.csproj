@@ -101,6 +101,7 @@
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\FormationDbManager.cs" />
     <Compile Include="Model\GameDbManager.cs" />
+    <Compile Include="Interface\IPlayerDbManager.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerDbManager.cs" />
     <Compile Include="PlayersActivity.cs" />
@@ -360,6 +361,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_statistic_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\header_bar_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

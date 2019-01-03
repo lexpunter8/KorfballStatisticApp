@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using KorfbalStatistics.Interface;
 using SQLite;
 
 namespace KorfbalStatistics.Model
@@ -36,16 +27,13 @@ namespace KorfbalStatistics.Model
 
         public Guid GetTeamIdByUserId(Guid userId)
         {
-            DbPlayer teamIdPlayer = myDbConnection.Table<DbPlayer>().FirstOrDefault(p => p.TeamId.Equals(userId));
-            DbCoach teamIdCoach = myDbConnection.Table<DbCoach>().FirstOrDefault(c => c.TeamId.Equals(userId));
+            DbPlayer teamIdPlayer = myDbConnection.Table<DbPlayer>().FirstOrDefault(p => p.Id.Equals(userId));
+            DbCoach teamIdCoach = myDbConnection.Table<DbCoach>().FirstOrDefault(c => c.Id.Equals(userId));
 
             if (teamIdCoach == null && teamIdPlayer == null)
                 return Guid.Empty;
 
             return teamIdPlayer == null ? teamIdCoach.TeamId : teamIdPlayer.TeamId;
-           
-
-
         }
 
         public void UpdatePlayer(DbPlayer player)
@@ -60,6 +48,16 @@ namespace KorfbalStatistics.Model
         public void RemovePlayer(DbPlayer player)
         {
             myDbConnection.Delete(player);
+        }
+
+        public DbTeam GetTeamByUSerId(Guid userId)
+        {
+            Guid teamId = GetTeamIdByUserId(userId);
+            if (teamId == Guid.Empty)
+                return null;
+            var teams = myDbConnection.Table<DbTeam>();
+            return teams.FirstOrDefault(t => t.Id == teamId);
+           
         }
     }
 }

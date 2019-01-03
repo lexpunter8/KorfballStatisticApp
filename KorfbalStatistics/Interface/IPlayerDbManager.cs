@@ -1,6 +1,7 @@
-﻿using System;
+﻿using KorfbalStatistics.Model;
+using System;
 
-namespace KorfbalStatistics.Model
+namespace KorfbalStatistics.Interface
 {
     public interface IPlayerDbManager
     {

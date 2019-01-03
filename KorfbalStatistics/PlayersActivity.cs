@@ -11,6 +11,7 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using KorfbalStatistics.Adapters;
+using KorfbalStatistics.CustomviewClasses;
 using KorfbalStatistics.Model;
 using KorfbalStatistics.Viewmodel;
 
@@ -34,11 +35,14 @@ namespace KorfbalStatistics
 
             myPlayersList.ItemClick += PlayersList_ItemClick;
             FindViewById<FloatingActionButton>(Resource.Id.addPlayerButton).Click += AddPlayerButton_Click;
+            FindViewById<RoundedTextView>(Resource.Id.teamName).Text = MainViewModel.Instance.Team.Name;
+            FindViewById<TextView>(Resource.Id.headerText).Text = "Players";
+
         }
 
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
-            ShowPlayerPopup(new DbPlayer());
+            ShowPlayerPopup();
         }
 
         private void PlayersList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -50,7 +54,7 @@ namespace KorfbalStatistics
             ShowPlayerPopup(player);
         }
 
-        private void ShowPlayerPopup(DbPlayer player)
+        private void ShowPlayerPopup(DbPlayer player = null)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             LayoutInflater inflater = LayoutInflater;
@@ -60,11 +64,16 @@ namespace KorfbalStatistics
             EditText abbrevationName = view.FindViewById<EditText>(Resource.Id.playerAbbrevation);
             EditText numberName = view.FindViewById<EditText>(Resource.Id.playerNumber);
 
+            bool newPlayer = false;
             if (player != null)
             {
                 playerName.Text = player.Name;
                 abbrevationName.Text = player.Abbrevation;
                 numberName.Text = player.Number.ToString();
+            } else
+            {
+                player = new DbPlayer();
+                newPlayer = true;
             }
            
 
@@ -75,7 +84,10 @@ namespace KorfbalStatistics
                     player.Name = playerName.Text;
                     player.Abbrevation = abbrevationName.Text;
                     player.Number = Convert.ToInt16(numberName.Text);
-                    myViewModel.UpdatePlayer(player);
+                    if (newPlayer)
+                        myViewModel.AddPlayer(player);
+                    else
+                        myViewModel.UpdatePlayer(player);
                 })
                 .SetNegativeButton("Cancel", (s, args) => {
                 });

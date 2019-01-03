@@ -49,7 +49,7 @@ namespace KorfbalStatistics.LocalDbModels
                     connection.CreateTable<DbAttackRebound>();
 
                     Guid teamGuid = Guid.NewGuid();
-                    connection.Insert(new DbTeam { Id = teamGuid, Name = "TestTeam" });
+                    connection.Insert(new DbTeam { Id = teamGuid, Name = "B1" });
                     connection.Insert(new DbCoach { Id = Guid.NewGuid(), TeamId = teamGuid, Name = "TestUser", Sex = "M"});
                     Guid playerGuid1 = Guid.NewGuid();
                     Guid playerGuid2 = Guid.NewGuid();

@@ -31,9 +31,14 @@ namespace KorfbalStatistics.Viewmodel
         }
         public List<DbPlayer> Players { get; private set; } = new List<DbPlayer>();
 
-        internal void UpdatePlayer(DbPlayer player)
+        public void UpdatePlayer(DbPlayer player)
         {
             DbManager.Instance.PlayerDbManager.UpdatePlayer(player);
+        }
+
+        public void AddPlayer(DbPlayer player)
+        {
+            DbManager.Instance.PlayerDbManager.AddPlayer(player);
         }
     }
 }
