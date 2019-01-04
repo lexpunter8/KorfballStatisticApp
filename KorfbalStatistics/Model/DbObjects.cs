@@ -10,6 +10,7 @@ namespace KorfbalStatistics.Model
         [PrimaryKey]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string FirstName { get; set; }
         [MaxLength(1)]
         public string Sex { get; set; }
         public string Username { get; set; }

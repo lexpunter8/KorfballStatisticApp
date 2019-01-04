@@ -16,8 +16,9 @@ namespace KorfbalStatistics.CustomviewClasses
 {
     public class ItemHolderRadioButton : RadioButton
     {
-        public ItemHolderRadioButton(Context context) : base(context)
+        public ItemHolderRadioButton(Context context, bool isSquared) : base(context)
         {
+            IsSquared = isSquared;
             Init();
             CheckedChange += ItemHolderRadioButton_CheckedChange;
         }

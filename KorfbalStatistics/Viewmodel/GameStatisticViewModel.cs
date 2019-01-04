@@ -55,23 +55,6 @@ namespace KorfbalStatistics.Viewmodel
         public DbGame Game { get; set; }
         public IAttack CurrentAttack { get; set; }
 
-        private void EndAttack()
-        {
-            ServiceLocator.GetService<GameService>().AddAttackToDb(CurrentAttack);
-
-            ChangeFunction(CurrentAttack.Goal != null);
-            EZoneFunction startfunction = StartingFunction == EZoneFunction.Defence ? EZoneFunction.Attack : EZoneFunction.Defence;
-            bool isFirstHalf = GameStatus == "H1" ? true : false;
-            if (CurrentFunction == EZoneFunction.Attack)
-            {
-                CurrentAttack = new Attack(EZoneFunction.Attack, startfunction, Game.Id, isFirstHalf);
-            }
-
-            else
-                CurrentAttack = new Attack(EZoneFunction.Defence, startfunction, Game.Id, isFirstHalf);
-            OnPropertyChanged(nameof(CurrentPlayers));
-        }
-
         public void ChangeFunction(bool isGoal)
         {
             //   s    function
@@ -186,10 +169,11 @@ namespace KorfbalStatistics.Viewmodel
             OnPropertyChanged("UpdateAll");
         }
 
-        public void ExecuteCommand()
+        public string ExecuteCommand()
         {
             myCommandManager.ProccespendingCommands();
             OnPropertyChanged("UpdateAll");
+            return myCurrentStatistic.GetSnackBarText();
         }
         public void RemoveCommand()
         {

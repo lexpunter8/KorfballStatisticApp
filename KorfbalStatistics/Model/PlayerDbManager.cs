@@ -59,5 +59,10 @@ namespace KorfbalStatistics.Model
             return teams.FirstOrDefault(t => t.Id == teamId);
            
         }
+
+        internal Player GetUnkownPlayer()
+        {
+            return myDbConnection.Table<Player>().FirstOrDefault(p => p.Id.Equals(Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d")));
+        }
     }
 }

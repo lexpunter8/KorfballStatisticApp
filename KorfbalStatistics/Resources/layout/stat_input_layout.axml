@@ -12,6 +12,7 @@
 		android:layout_height="wrap_content"
 		android:measureAllChildren="false"
 		android:layout_weight="1">
+		
 		<include
 			layout="@layout/statistic_attack"
 			android:layout_height="match_parent"
@@ -19,39 +20,12 @@
 			android:layout_weight="1"
 			android:id="@+id/buttonLayout"
 		/>
-
-		<LinearLayout
-			android:orientation="vertical"
-			android:minWidth="25px"
-			android:minHeight="25px"
-			android:layout_width="match_parent"
+		<include
+			layout="@layout/multiline_player_choice"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:id="@+id/four4Choice">
-			<TextView
-				android:text="HeaderText"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:minWidth="25px"
-				android:minHeight="25px"
-				android:id="@+id/headerText"
-				android:textAlignment="center"
-				android:layout_weight="0"
-				android:textColor="@android:color/black"
-				android:textStyle="bold"
-				android:textSize="20dp"
-				android:layout_marginBottom="20dp"
-			/>
-			<KorfbalStatistics.CustomviewClasses.ItemIdHolderRadioGroup
-				android:minWidth="25px"
-				android:minHeight="25px"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/radioGroup1"
-				android:orientation="horizontal">
-				
-			</KorfbalStatistics.CustomviewClasses.ItemIdHolderRadioGroup>
-		</LinearLayout>
+			android:layout_width="match_parent"
+			android:id="@+id/four4Choice"
+		/>
 
 		<include
 			layout="@layout/goaltype_selection_view"
@@ -85,41 +59,32 @@
 			<KorfbalStatistics.CustomviewClasses.MultiLineRadioGroup
 				android:minWidth="25px"
 				android:minHeight="25px"
-				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="5dp"
 				android:id="@+id/radioGroup1"
 				android:orientation="horizontal">
-				<Space
-					android:layout_width="0dp"
-					android:layout_height="1dp"
-					android:layout_weight="1" >
-				</Space>
 				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
-					android:layout_width="wrap_content"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_margin="5dp"
 					android:layout_height="wrap_content"
 					android:text="LDODK"
 					android:id="@+id/radioButton1"
 					custom:isSquared="true"
 				/>
-				<Space
-					android:layout_width="0dp"
-					android:layout_height="1dp"
-					android:layout_weight="1" >
-				</Space>
 				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
-					android:layout_width="wrap_content"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_margin="5dp"
 					android:layout_height="wrap_content"
 					android:text="OPPONENT"
 					android:id="@+id/radioButton2"
 					custom:isSquared="true"
-					custom:itemId="56465cdb-c383-413f-b6e0-36a523b29695" />
-				<Space
-					android:layout_width="0dp"
-					android:layout_height="1dp"
-					android:layout_weight="1" >
-				</Space>
+					custom:itemId="4aeab093-8e88-4b41-aa4d-1aa41ba7a8fd" />
 			</KorfbalStatistics.CustomviewClasses.MultiLineRadioGroup>
 		</LinearLayout>
+		
 		
 	</ViewFlipper>
 	<LinearLayout

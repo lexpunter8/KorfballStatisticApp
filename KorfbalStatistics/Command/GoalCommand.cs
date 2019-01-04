@@ -1,4 +1,4 @@
-﻿using KorfbalStatistics.Viewmodel;
+using KorfbalStatistics.Viewmodel;
 using System;
 using System.Collections.Generic;
 using static KorfbalStatistics.Model.Enums;

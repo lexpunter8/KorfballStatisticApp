@@ -19,5 +19,9 @@ namespace KorfbalStatistics.Model
         public int Number { get; set; }
         public EPlayerFunction ZoneFunction { get; set; }
         public string Abbrevation { get; set; }
+        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        public string FullName() => FirstName + " " + Name;
     }
 }

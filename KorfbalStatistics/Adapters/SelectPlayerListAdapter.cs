@@ -13,9 +13,9 @@ using KorfbalStatistics.Model;
 
 namespace KorfbalStatistics.Adapters
 {
-    public class DetailedPlayerListAdapter : ArrayAdapter<DbPlayer>
+    public class SelectPlayerListAdapter : ArrayAdapter<DbPlayer>
     {
-        public DetailedPlayerListAdapter(List<DbPlayer> data, Activity context) : base(context, Resource.Layout.detailed_player_view)
+        public SelectPlayerListAdapter(List<DbPlayer> data, Activity context) : base(context, Resource.Layout.detailed_player_view)
         {
             mydata = data;
             myContext = context;
@@ -43,12 +43,18 @@ namespace KorfbalStatistics.Adapters
         {
             var item = mydata[position];
             View view = convertView;
+            view.Click += View_Click;
             if (view == null)
                 view = myContext.LayoutInflater.Inflate(Resource.Layout.detailed_player_view, null);
             view.FindViewById<TextView>(Resource.Id.playerAbbrevation).Text = item.Abbrevation;
-            view.FindViewById<TextView>(Resource.Id.playerName).Text = item.FirstName + " " + item.Name;
+            view.FindViewById<TextView>(Resource.Id.playerName).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.playerNumber).Text = item.Number.ToString();
             return view;
+        }
+
+        private void View_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

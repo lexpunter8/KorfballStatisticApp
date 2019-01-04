@@ -24,5 +24,21 @@ namespace KorfbalStatistics.Services
 
             return players.ToList();
         }
+        public string GetPlayerNameById(Guid playerId)
+        {
+            DbPlayer player = myPlayerDbManager.GetPlayerById(playerId);
+            return player.FirstName;
+        }
+
+        internal Player GetUnkownPlayer()
+        {
+            DbPlayer unkownDbPlayer = myPlayerDbManager.GetPlayerById(Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d"));
+            return new Player
+            {
+                FirstName = unkownDbPlayer.FirstName,
+                Id = unkownDbPlayer.Id,
+                Number = -1
+            };
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace KorfbalStatistics.Command
         public override void Execute()
         {
             Guid reboundGuid = GetStatistic(EStatisticType.DefensiveRebound);
-            myAttack.Shot(Guid.Empty, Guid.Empty);
+            myAttack.Shot(Guid.Parse("4aeab093-8e88-4b41-aa4d-1aa41ba7a8fd"), reboundGuid);
             if (reboundGuid == Guid.Empty)
                 base.Execute();
             IsCompleted = true;
@@ -45,6 +45,8 @@ namespace KorfbalStatistics.Command
                 myAttack.Shots.Remove(shotPlayer);
 
             DbAttackRebound reboundPlayer = myAttack.Rebounds.FirstOrDefault(p => p.PlayerId == GetStatistic(EStatisticType.Rebound));
+            if (reboundPlayer == null)
+                return;
             if (reboundPlayer.Count > 1)
                 reboundPlayer.Count--;
             else

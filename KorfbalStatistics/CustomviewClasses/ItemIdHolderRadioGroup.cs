@@ -41,7 +41,7 @@ namespace KorfbalStatistics.CustomviewClasses
             myButtons.ForEach(b => b.Checked = false);
         }
 
-        public void SetPlayers(List<Player> myCurrentPlayers)
+        public virtual void SetPlayers(List<Player> myCurrentPlayers)
         {
             myButtons.Clear();
             Space space = new Space(Context)
@@ -53,7 +53,7 @@ namespace KorfbalStatistics.CustomviewClasses
             AddView(space);
             for (int i = 0; i < myCurrentPlayers.Count; i++)
             {
-                ItemHolderRadioButton newButton = new ItemHolderRadioButton(Context)
+                ItemHolderRadioButton newButton = new ItemHolderRadioButton(Context, false)
                 {
                     LayoutParameters = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent),
                     ItemId = myCurrentPlayers[i].Id,

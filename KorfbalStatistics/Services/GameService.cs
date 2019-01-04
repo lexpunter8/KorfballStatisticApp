@@ -1,5 +1,6 @@
 ﻿using KorfbalStatistics.Interface;
 using KorfbalStatistics.Model;
+using System;
 
 namespace KorfbalStatistics.Services
 {
@@ -51,6 +52,11 @@ namespace KorfbalStatistics.Services
                 myGameDbManager.RemoveGoal(attack.Goal);
             }
             myGameDbManager.RemoveAttack(attack.DbAttack);
+        }
+
+        public string GetGoalTypeById(Guid goalTypeId)
+        {
+            return myGameDbManager.GetGoalTypeById(goalTypeId).Name;
         }
     }
 }

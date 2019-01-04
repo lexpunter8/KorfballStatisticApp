@@ -45,7 +45,9 @@ namespace KorfbalStatistics.Services
                     Id = dbPlayer.Id,
                     Abbrevation = dbPlayer.Abbrevation,
                     Number = dbPlayer.Number,
-                    ZoneFunction = function
+                    ZoneFunction = function,
+                    Name = dbPlayer.Name,
+                    FirstName = dbPlayer.FirstName
                 });
             });
 

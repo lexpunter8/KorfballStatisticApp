@@ -1,7 +1,9 @@
 ﻿using KorfbalStatistics.Interface;
+using KorfbalStatistics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KorfbalStatistics.CustomExtensions;
 using static KorfbalStatistics.Model.Enums;
 
 namespace KorfbalStatistics.Command
@@ -52,6 +54,25 @@ namespace KorfbalStatistics.Command
             StatisticsNeeded = new List<EStatisticType>(newList);
             StatisticValues.Remove(lastStat.Key);
             return lastStat.Key;
+        }
+
+        public string GetSnackBarText()
+        {
+            PlayersService service = ServiceLocator.GetService<PlayersService>();
+            string text = string.Empty;
+            foreach (var stat in StatisticValues)
+            {
+                string statValueText;
+                if (stat.Key == EStatisticType.GoalType)
+                    statValueText = ServiceLocator.GetService<GameService>().GetGoalTypeById(stat.Value);
+                else
+                    statValueText = service.GetPlayerNameById(stat.Value);
+                text += stat.Key.GetFriendlyName() + ": " + statValueText + ", ";
+            }
+            if (text == string.Empty)
+                return StatisticType.GetFriendlyName();
+            int lastCommaIndex = text.LastIndexOf(',');
+            return text.Substring(0, lastCommaIndex);
         }
 
         public EStatisticType StatisticType { get; set; }

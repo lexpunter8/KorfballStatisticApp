@@ -6,7 +6,7 @@ namespace KorfbalStatistics.Command
         void Execute();
         void Redo();
         void Undo();
-        string ToString();
+        string GetSnackBarText();
 
         bool IsCompleted { get; set; }
     }

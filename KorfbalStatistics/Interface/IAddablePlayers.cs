@@ -9,13 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using KorfbalStatistics.Model;
 
 namespace KorfbalStatistics.Interface
 {
-    public interface IGameService
+    public interface IAddablePlayers
     {
-        void AddAttackToDb(IAttack attack);
-        void RemoveAttackFromDb(IAttack attack);
-        string GetGoalTypeById(Guid goalTypeId);
+        void SetPlayers(List<Player> myCurrentPlayers);
     }
 }

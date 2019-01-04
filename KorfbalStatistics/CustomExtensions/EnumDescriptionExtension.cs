@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace KorfbalStatistics.CustomExtensions
 {
@@ -32,6 +33,23 @@ namespace KorfbalStatistics.CustomExtensions
             }
 
             return null; // could also return string.Empty
+        }
+
+        public static string GetFriendlyName<T>(this T e) where T : IConvertible
+        {
+            if (e is Enum)
+            {
+                string enumString = e.ToString();
+                var r = new Regex(@"
+                (?<=[A-Z])(?=[A-Z][a-z]) |
+                 (?<=[^A-Z])(?=[A-Z]) |
+                 (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace);
+
+                
+                string frendly = r.Replace(enumString, " ");
+                return frendly;
+            }
+            return string.Empty;
         }
     }
 }
