@@ -6,6 +6,7 @@ namespace KorfbalStatistics.Model
     {
         public enum EZoneFunction
         {
+            None,
             [Description("Attack")]
             Attack,
             [Description("Defence")]

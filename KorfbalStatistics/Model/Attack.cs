@@ -70,9 +70,6 @@ namespace KorfbalStatistics.Model
             if (reboundPlayerId == Guid.Empty)
                 return;
 
-            if (reboundPlayerId == Guid.Empty)
-                return;
-
             IDbAttackRebound playerRebound = Rebounds.FirstOrDefault(p => p.PlayerId.Equals(reboundPlayerId));
             if (playerRebound == null)
                 Rebounds.Add(new DbAttackRebound
@@ -84,6 +81,27 @@ namespace KorfbalStatistics.Model
                 });
             else
                 playerRebound.Count++;
+        }
+
+        public int ShotCount()
+        {
+            int shotCount = 0;
+            Shots.ForEach(s =>
+            {
+                shotCount += s.Count;
+            });
+            if (Goal != null)
+                shotCount++;
+            return shotCount;
+        }
+        public int ReboundCount()
+        {
+            int reboundCount = 0;
+            Rebounds.ForEach(s =>
+            {
+                reboundCount += s.Count;
+            });
+            return reboundCount;
         }
 
         public object Clone()

@@ -20,7 +20,7 @@ namespace KorfbalStatistics.Command
         {
             if (StatisticsNeeded.Count != 0)
                 return;
-            myCurrentAttack.Turnover(GetStatistic(EStatisticType.Turnover));
+            myCurrentAttack.Turnover(GetStatistic(EStatisticType.Interception));
             base.Execute();
         }
         public override void Undo()

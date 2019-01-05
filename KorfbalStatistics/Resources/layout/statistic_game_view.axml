@@ -10,10 +10,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/appBarLayout1">
         <ImageButton
-            android:src="@drawable/ic_action_more_vert"
+            android:src="@drawable/ic_back_48px"
             android:layout_width="24.0dp"
             android:layout_height="24.0dp"
-            android:id="@+id/backButton"
+            android:id="@+id/returnButton"
             android:maxHeight="24dp"
             android:layout_margin="5dp" />
         <RelativeLayout

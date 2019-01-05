@@ -26,18 +26,8 @@ namespace KorfbalStatistics.CustomviewClasses
         private void ItemHolderRadioButton_CheckedChange(object sender, CheckedChangeEventArgs e)
         {
             Checked = e.IsChecked;
-            if (e.IsChecked)
-            {
-                if (IsSquared)
-                    Background = Context.GetDrawable(Resource.Drawable.square_selected_radiobutton);
-                else
-                    Background = Context.GetDrawable(Resource.Drawable.selectedRadioCircle);
-            }
-            else
-                if (IsSquared)
-                    Background = Context.GetDrawable(Resource.Drawable.square_deselected_radiobutton);
-                else
-                    Background = Context.GetDrawable(Resource.Drawable.deselectedradioButtonCircle);
+            SetDrawable();
+            
         }
 
         public ItemHolderRadioButton(Context context, IAttributeSet attrs) : base(context, attrs)
@@ -77,17 +67,28 @@ namespace KorfbalStatistics.CustomviewClasses
             CheckedChange += ItemHolderRadioButton_CheckedChange;
         }
         
-        private void Init()
+        public void Init()
         {
             TextAlignment = TextAlignment.Center;
-            if (IsSquared)
-                Background = Context.GetDrawable(Resource.Drawable.square_deselected_radiobutton);
-            else
-                Background = Context.GetDrawable(Resource.Drawable.deselectedradioButtonCircle);
-            Checked = false;
+            SetDrawable();
             SetButtonDrawable(Android.Resource.Color.Transparent);
             
          }
+        private void SetDrawable()
+        {
+            if (Checked)
+            {
+                if (IsSquared)
+                    Background = Context.GetDrawable(Resource.Drawable.square_selected_radiobutton);
+                else
+                    Background = Context.GetDrawable(Resource.Drawable.selectedRadioCircle);
+            }
+            else
+                if (IsSquared)
+                Background = Context.GetDrawable(Resource.Drawable.square_deselected_radiobutton);
+            else
+                Background = Context.GetDrawable(Resource.Drawable.deselectedradioButtonCircle);
+        }
 
         public bool IsSquared { get; set; }
 

@@ -37,10 +37,10 @@ namespace KorfbalStatistics.Model
             myDbConnection.Delete(attack);
         }
 
-        public Guid GetAttackById(Guid id)
+        public DbAttack GetAttackById(Guid id)
         {
             DbAttack attack = myDbConnection.Table<DbAttack>().FirstOrDefault(a => a.Id == id);
-            return attack == null ? attack.Id : Guid.Empty; 
+            return attack;
         }
 
         public void AddRebound(DbAttackRebound rebound)

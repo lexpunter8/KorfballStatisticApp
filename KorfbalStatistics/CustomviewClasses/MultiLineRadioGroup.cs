@@ -75,6 +75,7 @@ namespace KorfbalStatistics.CustomviewClasses
                 if (rb.Id != checkedChangedButton.Id)
                     rb.Checked = false;
             });
+            var test = myButtons.Where(b => b.Checked).ToList();
             OnCheckedChanged(new CheckedChangeEventArgs(checkedChangedButton.Id));
         }
 
@@ -85,7 +86,7 @@ namespace KorfbalStatistics.CustomviewClasses
             CheckedChanged?.Invoke(this, e);
         }
 
-        public override void SetPlayers(List<Model.Player> myCurrentPlayers)
+        public override void SetPlayers(List<Player> myCurrentPlayers)
         {
             int count = myCurrentPlayers.Count;
             int layoutCount = ChildCount;

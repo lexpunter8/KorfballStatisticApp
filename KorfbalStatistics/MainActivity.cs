@@ -25,6 +25,8 @@ namespace KorfbalStatistics
 
             Button myLoginButton = FindViewById<Button>(Resource.Id.loginButton);
             myLoginButton.Click += LoginButtonClick;
+
+            StartActivity(typeof(HomeActivity));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

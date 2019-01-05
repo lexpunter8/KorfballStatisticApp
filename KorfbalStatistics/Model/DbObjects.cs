@@ -81,7 +81,7 @@ namespace KorfbalStatistics.Model
         public Guid GameId { get; set; }
         public bool IsSchotClockOverride { get; set; }
         public bool IsOpponentAttack { get; set; }
-        public string ZoneStartFunction { get; set; }
+        public string ZoneStartFunction { get; set; } // A/D
         public bool IsFirstHalf { get; set; }
         public bool IsSynchronised { get; set; }
     }

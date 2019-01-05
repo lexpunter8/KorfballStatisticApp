@@ -33,15 +33,15 @@ namespace KorfbalStatistics.Command
         {
             myGameService.AddAttackToDb(myCurrentAttack);
             myGameStat.ChangeFunction(myCurrentAttack.Goal != null);
-            EZoneFunction startfunction = myGameStat.StartingFunction == EZoneFunction.Defence ? EZoneFunction.Attack : EZoneFunction.Defence;
+           // EZoneFunction startfunction = myGameStat.StartingFunction == EZoneFunction.Defence ? EZoneFunction.Attack : EZoneFunction.Defence;
             bool isFirstHalf = myGameStat.GameStatus == "H1" ? true : false;
             if (myGameStat.CurrentFunction == EZoneFunction.Attack)
             {
-                myGameStat.CurrentAttack = new Attack(EZoneFunction.Attack, startfunction, myGameStat.Game.Id, isFirstHalf);
+                myGameStat.CurrentAttack = new Attack(EZoneFunction.Attack, myGameStat.StartingFunction, myGameStat.Game.Id, isFirstHalf);
             }
 
             else
-                myGameStat.CurrentAttack = new Attack(EZoneFunction.Defence, startfunction, myGameStat.Game.Id, isFirstHalf);
+                myGameStat.CurrentAttack = new Attack(EZoneFunction.Defence, myGameStat.StartingFunction, myGameStat.Game.Id, isFirstHalf);
             IsCompleted = true;
         }
 

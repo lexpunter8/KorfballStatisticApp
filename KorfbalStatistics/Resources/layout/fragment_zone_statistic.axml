@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<TextView
-		android:text="Zone statistic"
-		android:layout_width="match_parent"
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:custom="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<include
+		layout="@layout/header_bar_layout"
 		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/header"/>
+	<LinearLayout
+		android:orientation="horizontal"
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:id="@+id/textView1" />
-
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/linearLayout4">
+		<KorfbalStatistics.CustomviewClasses.MultiLineRadioGroup
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_margin="5dp"
+			android:id="@+id/attackDefenceGroup">
+			<LinearLayout
+				android:orientation="horizontal"
+				android:minWidth="25px"
+				android:minHeight="25px"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/linearLayout43">
+				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
+					android:text="Attack"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_margin="5dp"
+					android:layout_height="match_parent"
+					android:checked="true"
+					android:id="@+id/itemHolderRadioButton2"
+					custom:isSquared="true"/>
+				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
+					android:text="Defence"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_margin="5dp"
+					android:layout_height="wrap_content"
+					android:id="@+id/itemHolderRadioButton1"
+				
+					custom:isSquared="true"
+					custom:itemId="df6dd6f0-9adc-44da-a662-b9041e91d752"/>
+				</LinearLayout>
+		</KorfbalStatistics.CustomviewClasses.MultiLineRadioGroup>
+		
+	</LinearLayout>
+	<include
+		layout="@layout/base_statistic_layout"
+		android:layout_width="match_parent"
+		android:id="@+id/baseLayout"
+		android:layout_height="wrap_content"
+	/>
 </LinearLayout>

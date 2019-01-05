@@ -66,8 +66,8 @@ namespace KorfbalStatistics.Adapters
                 if (item.Goal != null)
                 {
                     text1.Text = "Goal";
-                    text2.Text = dbPlayerManager.GetPlayerById(item.Goal.PlayerId).Name;
-                    text3.Text = dbPlayerManager.GetPlayerById(item.Goal.AssistPlayerId).Name;
+                    text2.Text = dbPlayerManager.GetPlayerById(item.Goal.PlayerId).FirstName;
+                    text3.Text = dbPlayerManager.GetPlayerById(item.Goal.AssistPlayerId).FirstName;
                     text4.Text = DbManager.Instance.GameDbManager.GetGoalTypeById(item.Goal.GoalTypeId).Name;
                 }
                 else if (item.DbAttack.IsSchotClockOverride)
@@ -80,7 +80,7 @@ namespace KorfbalStatistics.Adapters
                 else if (item.DbAttack.TurnoverPlayerId != null)
                 {
                     text1.Text = "TO";
-                    text2.Text = dbPlayerManager.GetPlayerById(item.DbAttack.TurnoverPlayerId.Value).Name;
+                    text2.Text = dbPlayerManager.GetPlayerById(item.DbAttack.TurnoverPlayerId.Value).FirstName;
                     text3.Text = "";
                     text4.Text = "";
                 }
@@ -90,14 +90,14 @@ namespace KorfbalStatistics.Adapters
                 if (childPosition >= item.Shots.Count)
                 {
                     text1.Text = "Rebound";
-                    text2.Text = dbPlayerManager.GetPlayerById(item.Rebounds[childPosition - item.Shots.Count].PlayerId).Name;
+                    text2.Text = dbPlayerManager.GetPlayerById(item.Rebounds[childPosition - item.Shots.Count].PlayerId).FirstName;
 
                     text3.Text = "Count: " + item.Rebounds[childPosition - item.Shots.Count].Count;
                 }
                 else
                 {
                     text1.Text = "Shot";
-                    text2.Text = dbPlayerManager.GetPlayerById(item.Shots[childPosition].PlayerId).Name;
+                    text2.Text = dbPlayerManager.GetPlayerById(item.Shots[childPosition].PlayerId).FirstName;
 
                     text3.Text = "Count: " + item.Shots[childPosition].Count;
                 }

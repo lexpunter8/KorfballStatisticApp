@@ -64,7 +64,7 @@ namespace KorfbalStatistics.Command
             {
                 string statValueText;
                 if (stat.Key == EStatisticType.GoalType)
-                    statValueText = ServiceLocator.GetService<GameService>().GetGoalTypeById(stat.Value);
+                    statValueText = ServiceLocator.GetService<GameService>().GetGoalTypeById(stat.Value).Name;
                 else
                     statValueText = service.GetPlayerNameById(stat.Value);
                 text += stat.Key.GetFriendlyName() + ": " + statValueText + ", ";

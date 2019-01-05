@@ -61,6 +61,7 @@ namespace KorfbalStatistics.Fragments
             cardViewLeft = view.FindViewById<CardView>(Resource.Id.statCardLeft);
             cardViewRight = view.FindViewById<CardView>(Resource.Id.statCardRight);
 
+            view.FindViewById<ImageButton>(Resource.Id.returnButton).Click += ReturnButton_Click;
 
             statInputSwitcher = view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<ViewFlipper>(Resource.Id.viewSwitcher1);
 
@@ -93,6 +94,11 @@ namespace KorfbalStatistics.Fragments
             // return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
+        private void ReturnButton_Click(object sender, EventArgs e)
+        {
+            Activity.Finish();
+        }
+
         private void CancelButtonClicked(object sender, EventArgs e)
         {
             statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout));
@@ -105,7 +111,12 @@ namespace KorfbalStatistics.Fragments
         {
             myCurrentStatToGet = myViewModel.CurrentStatistic.GetPreviousStatistic();
             if (myCurrentStatToGet == EStatisticType.None)
+            {
+                statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout));
+                actionButtonLayout.Visibility = ViewStates.Gone;
                 myViewModel.RemoveCommand();
+                return;
+            }
             SetStatisticLayout();
         }
 
@@ -117,7 +128,11 @@ namespace KorfbalStatistics.Fragments
         private void GameStatisticsActivity_CheckedChanged(object sender, EventArgs e)
         {
             ItemIdHolderRadioGroup radioGroup = sender as ItemIdHolderRadioGroup;
-            okButton.Enabled = radioGroup.GetSelected() != null;
+            ItemHolderRadioButton selectedButton = radioGroup.GetSelected();
+            myViewModel.CurrentStatistic.SetStatistic(myCurrentStatToGet, selectedButton.ItemId);
+            myCurrentStatToGet = myViewModel.CurrentStatistic.GetNextStatistic();
+            SetStatisticLayout();
+            radioGroup.DeselectAll();
         }
 
         private List<Player> myCurrentPlayers = new List<Player>();
@@ -196,6 +211,7 @@ namespace KorfbalStatistics.Fragments
                     break;
                 case EStatisticType.GoalType:
                     statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.goaltype));
+                    statInputSwitcher.CurrentView.FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).SetToDefault();
                     break;
                 default:
                     statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout));

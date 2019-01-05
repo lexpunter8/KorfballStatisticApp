@@ -28,7 +28,7 @@ namespace KorfbalStatistics.Command
 
         public override void Execute()
         {
-            myCurrentAttack.AddGoal(GetStatistic(EStatisticType.Goal), Guid.Empty, GetStatistic(EStatisticType.GoalType));
+            myCurrentAttack.AddGoal(GetStatistic(EStatisticType.ConcededGoal), Guid.Empty, GetStatistic(EStatisticType.GoalType));
             base.Execute();
         }
 

@@ -10,7 +10,7 @@ namespace KorfbalStatistics.Interface
         Guid GetTeamIdByUserId(Guid userId);
         void AddGame(DbGame game);
         void AddAttack(DbAttack atttack);
-        Guid GetAttackById(Guid id);
+        DbAttack GetAttackById(Guid id);
         void AddRebound(DbAttackRebound rebound);
         void RemoveRebound(DbAttackRebound rebound);
         void AddShot(DbAttackShot shot);

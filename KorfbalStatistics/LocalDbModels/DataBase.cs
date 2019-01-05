@@ -95,6 +95,7 @@ namespace KorfbalStatistics.LocalDbModels
                     connection.Insert(new DbGoalType { Id = Guid.Parse("4d2eade7-ebdb-441a-bd52-896d9dfb4a80"), Name = "Free-throw" });
                     connection.Insert(new DbGoalType { Id = Guid.Parse("5dc42cda-3613-498c-b5e1-4f2936dd0be7"), Name = "Penalty" });
                     connection.Insert(new DbGoalType { Id = Guid.Parse("51273c25-8193-4ea1-9145-de9648700b00"), Name = "UnKown" });
+                    
 
                     return true;
                 }

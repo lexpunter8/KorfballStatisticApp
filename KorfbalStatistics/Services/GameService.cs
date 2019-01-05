@@ -1,6 +1,9 @@
 ﻿using KorfbalStatistics.Interface;
 using KorfbalStatistics.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using static KorfbalStatistics.Model.Enums;
 
 namespace KorfbalStatistics.Services
 {
@@ -54,9 +57,19 @@ namespace KorfbalStatistics.Services
             myGameDbManager.RemoveAttack(attack.DbAttack);
         }
 
-        public string GetGoalTypeById(Guid goalTypeId)
+        public List<Attack> GetAttacksByGameId(Guid gameId, EZoneFunction zoneFilter)
         {
-            return myGameDbManager.GetGoalTypeById(goalTypeId).Name;
+            List<Attack> attacks = new List<Attack>(myGameDbManager.GetFullAttackForGame(gameId));
+
+            if (zoneFilter == EZoneFunction.None)
+                return attacks;
+            string zoneStartFunctionFilter = zoneFilter == EZoneFunction.Attack ? "A" : "D";
+            return attacks.Where(a => a.DbAttack.ZoneStartFunction.Equals(zoneStartFunctionFilter)).ToList();
+        }
+
+        public DbGoalType GetGoalTypeById(Guid goalTypeId)
+        {
+            return myGameDbManager.GetGoalTypeById(goalTypeId);
         }
     }
 }

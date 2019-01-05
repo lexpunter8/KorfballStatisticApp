@@ -40,7 +40,10 @@ namespace KorfbalStatistics.CustomviewClasses
         {
             myButtons.ForEach(b => b.Checked = false);
         }
-
+        public void SetToDefault()
+        {
+            myButtons.ForEach(b => b.Init());
+        }
         public virtual void SetPlayers(List<Player> myCurrentPlayers)
         {
             myButtons.Clear();

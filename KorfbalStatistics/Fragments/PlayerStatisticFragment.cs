@@ -10,6 +10,9 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using KorfbalStatistics.Adapters;
+using KorfbalStatistics.Model;
+using KorfbalStatistics.Viewmodel;
 
 namespace KorfbalStatistics.Fragments
 {
@@ -26,8 +29,19 @@ namespace KorfbalStatistics.Fragments
         {
             // Use this to return your custom view for this Fragment
             View view = inflater.Inflate(Resource.Layout.fragment_player_statistic, container, false);
+            List<DbFormation> formation = DbManager.Instance.FormationDbManager.GetFormationByGameId(MainViewModel.Instance.CurrentGame.Id).ToList();
+            var playerStats = new List<PlayerStatisticViewModel>();
+            formation.ForEach(p => playerStats.Add(new PlayerStatisticViewModel(p.PlayerId)));
+
+            var playerList = view.FindViewById<ExpandableListView>(Resource.Id.playerList);
+            playerList.SetAdapter(new PlayerStatisticsAdapter(playerStats, Activity));
+            playerList.ItemClick += PlayerList_ItemClick;
 
             return view;
+        }
+
+        private void PlayerList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
         }
     }
 }

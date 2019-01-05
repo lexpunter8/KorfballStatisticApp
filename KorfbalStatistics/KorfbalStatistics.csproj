@@ -60,6 +60,7 @@
     <Compile Include="Adapters\AttackListAdapter.cs" />
     <Compile Include="Adapters\DetailedPlayerListAdapter.cs" />
     <Compile Include="Adapters\GameListAdapter.cs" />
+    <Compile Include="Adapters\PlayerStatisticsAdapter.cs" />
     <Compile Include="Adapters\SelectPlayerListAdapter.cs" />
     <Compile Include="Adapters\ZonePlayersListAdapter.cs" />
     <Compile Include="Command\AttackEndingCommand.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Interface\IDbObjects.cs" />
     <Compile Include="Interface\IGameService.cs" />
     <Compile Include="Interface\IStatisticCommand.cs" />
+    <Compile Include="Interface\IStatisticViewModel.cs" />
     <Compile Include="LocalDbModels\DataBase.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Attack.cs" />
@@ -116,14 +118,18 @@
     <Compile Include="Services\PlayersService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="StatisticOverViewActivity.cs" />
+    <Compile Include="Viewmodel\BaseStatisticViewModel.cs" />
     <Compile Include="Viewmodel\BaseViewModel.cs" />
     <Compile Include="Viewmodel\FormationViewModel.cs" />
     <Compile Include="Viewmodel\GameStatisticViewModel.cs" />
     <Compile Include="Viewmodel\HomeViewModel.cs" />
     <Compile Include="Viewmodel\MainViewModel.cs" />
+    <Compile Include="Viewmodel\PlayerStatisticViewModel.cs" />
     <Compile Include="Viewmodel\PlayersViewModel.cs" />
     <Compile Include="Viewmodel\StatisticOverViewViewModel.cs" />
+    <Compile Include="Viewmodel\TeamStatisticViewModel.cs" />
     <Compile Include="Viewmodel\TeamViewModel.cs" />
+    <Compile Include="Viewmodel\ZoneStatisticViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -162,6 +168,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="OxyPlot.Xamarin.Android">
+      <Version>1.0.0</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>
@@ -373,6 +382,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\multiline_player_choice.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\statistic_card_view_small.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\base_statistic_layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -22,5 +22,18 @@ namespace KorfbalStatistics.Viewmodel
 
         private Guid myGameId { get; set; }
         public List<Attack> Attacks { get; internal set; }
+        public List<IStatisticViewModel> StatisticViewModels = new List<IStatisticViewModel>
+        {
+            new PlayerStatisticViewModel(Guid.Empty),
+            new ZoneStatisticViewModel(),
+            new TeamStatisticViewModel()
+        };
+
+        public IStatisticViewModel CurrentStatisticViewModel;
+
+        public void SetTab(int tabId)
+        {
+            CurrentStatisticViewModel = StatisticViewModels[tabId];
+        }
     }
 }
