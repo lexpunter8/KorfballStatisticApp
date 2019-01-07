@@ -72,7 +72,7 @@ namespace KorfbalStatistics.Fragments
             myViewModel.PropertyChanged += MyViewModel_PropertyChanged;
             statButtonLayout = statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout);
             actionButtonLayout = view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<LinearLayout>(Resource.Id.actionButtons);
-            okButton.Enabled = false;
+            okButton.Visibility = ViewStates.Gone;
             statInputSwitcher.FindViewById(Resource.Id.four4Choice).FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).CheckedChanged += GameStatisticsActivity_CheckedChanged;
             statInputSwitcher.FindViewById(Resource.Id.twoChoice).FindViewById<ItemIdHolderRadioGroup>(Resource.Id.radioGroup1).CheckedChange += RadioButtonGroup_CheckedChange;
             statInputSwitcher.FindViewById(Resource.Id.goaltype).FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).CheckedChanged += GameStatisticsActivity_CheckedChanged;
