@@ -25,7 +25,7 @@
 		android:id="@+id/linearLayout1"
 		android:layout_weight="3">
 		<Button
-			android:text="ShotClockoverride"
+			android:text="Schotklok overschrijding"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:id="@+id/shotclockButton"
@@ -47,14 +47,14 @@
 		android:id="@+id/linearLayout2"
 		android:layout_weight="3">
 		<Button
-			android:text="goal"
+			android:text="Doelpunt"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:id="@+id/goalButton"
 			android:layout_weight="1"
 			android:drawableTint="#ffc0ca33" />
 		<Button
-			android:text="shot"
+			android:text="Schot"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:id="@+id/shotButton"

@@ -17,7 +17,8 @@ namespace KorfbalStatistics.Model
     {
         public Guid Id { get; set; }
         public int Number { get; set; }
-        public EPlayerFunction ZoneFunction { get; set; }
+        public EPlayerFunction StartZoneFunction { get; set; }
+        public EPlayerFunction CurrentZoneFunction { get; set; }
         public string Abbrevation { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }

@@ -56,7 +56,8 @@ namespace KorfbalStatistics.Viewmodel
                 formation.Add(new DbFormation
                 {
                     Id = Guid.NewGuid(),
-                    Function = "A",
+                    StartFunction = "A",
+                    CurrentFunction = "A",
                     GameId = myGame.Id,
                     PlayerId = p.Id
                 });
@@ -67,7 +68,8 @@ namespace KorfbalStatistics.Viewmodel
                 formation.Add(new DbFormation
                 {
                     Id = Guid.NewGuid(),
-                    Function = "D",
+                    StartFunction = "D",
+                    CurrentFunction = "D",
                     GameId = myGame.Id,
                     PlayerId = p.Id
                 });
@@ -80,7 +82,8 @@ namespace KorfbalStatistics.Viewmodel
                 formation.Add(new DbFormation
                 {
                     Id = Guid.NewGuid(),
-                    Function = "S",
+                    StartFunction = "S",
+                    CurrentFunction = "S",
                     GameId = myGame.Id,
                     PlayerId = p.Id
                 });

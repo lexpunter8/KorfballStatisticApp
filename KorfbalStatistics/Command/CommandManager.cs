@@ -32,14 +32,15 @@ namespace KorfbalStatistics.Command
         /// Get the latest performed command and undo, remove this command from the to undo-list 
         /// and add command to the to redo-list 
         /// </summary>
-        public void UndoLastAction()
+        public string UndoLastAction()
         {
             var lastCommand = myCommandsToUndo.LastOrDefault(c => c.IsCompleted);
             if (lastCommand == null)
-                return;
+                return "";
             lastCommand.Undo();
             myCommandsToUndo.Remove(lastCommand);
             myCommandsToRedo.Add(lastCommand);
+            return lastCommand.GetSnackBarText();
         }
 
         /// <summary>

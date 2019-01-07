@@ -61,19 +61,19 @@ namespace KorfbalStatistics.Adapters
             CardView statAttackCount = view.FindViewById<CardView>(Resource.Id.statAttackCount);
             statShotclock.Visibility = ViewStates.Gone;
 
-            statShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Goals / Shots";
+            statShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Doelpunten / Schoten";
             statShot.FindViewById<TextView>(Resource.Id.statText).Text = item.GoalCount + " / " + item.ShotCount;
             double percentageGoal = (Convert.ToDouble(item.GoalCount) / item.ShotCount) * 100;
 
             statShot.FindViewById<TextView>(Resource.Id.statDetailText).Text = string.Format("{0}%", percentageGoal);
 
-            statRebound.FindViewById<TextView>(Resource.Id.headerText).Text = "Offensive rebounds";
+            statRebound.FindViewById<TextView>(Resource.Id.headerText).Text = "Aanvallende rebounds";
             statRebound.FindViewById<TextView>(Resource.Id.statText).Text = item.ReboundCount.ToString();
 
-            statInterception.FindViewById<TextView>(Resource.Id.headerText).Text = "Interceptions / Turnovers";
+            statInterception.FindViewById<TextView>(Resource.Id.headerText).Text = "Onderscheppingen / Balverlies";
             statInterception.FindViewById<TextView>(Resource.Id.statText).Text = item.InterceptionCount + " / " + item.TurnoverCount;
             
-            statConcededShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Conceded goals / shots";
+            statConcededShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Doelpunten / schoten tegen";
             statConcededShot.FindViewById<TextView>(Resource.Id.statText).Text = item.ConcededGoalCount + " / " + item.ConcededShotCount;
 
 

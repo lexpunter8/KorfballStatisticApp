@@ -27,9 +27,9 @@ namespace KorfbalStatistics.Fragments
         private LinearLayout statButtonLayout;
         private LinearLayout actionButtonLayout;
         private ViewFlipper statInputSwitcher;
-        private Button okButton;
+        private Button okButton, myEndHalfButton;
         private TextView myHomeScoreTextView, myAwayScoreTextView, myGameStatus;
-        private RoundedTextViewLayout myCurrentPlayersLayout;
+        private SquaredTextViewLayout myCurrentPlayersLayout;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -80,18 +80,52 @@ namespace KorfbalStatistics.Fragments
             myGameStatus = view.FindViewById<TextView>(Resource.Id.gameStatus);
             myGameStatus.Text = myViewModel.GameStatus;
 
-            myCurrentPlayersLayout = view.FindViewById<RoundedTextViewLayout>(Resource.Id.currentPlayersLayout);
+            myEndHalfButton = view.FindViewById<Button>(Resource.Id.endHalfButton);
+            myEndHalfButton.Click += EndHalfButton_Clicked;
+
+            myCurrentPlayersLayout = view.FindViewById<SquaredTextViewLayout>(Resource.Id.currentPlayersLayout);
             myHomeScoreTextView = view.FindViewById<TextView>(Resource.Id.homeTeamScore);
             myAwayScoreTextView = view.FindViewById<TextView>(Resource.Id.awayTeamScore);
 
             view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.rightActionButton).Click += Bottom_RightButtonClicked;
-            view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.undoButton).Click += (e, args) => myViewModel.Undo(); 
-           // view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.redoButton).Click += (e, args) => myViewModel.Redo(); 
-            view.FindViewById<ImageButton>(Resource.Id.leftActionButton).Visibility = ViewStates.Invisible;
+            view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.undoButton).Click += UndoButton_Clicked;
+            view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.leftActionButton).Click += LeftActionButton_Clicked;
+            view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.leftActionButton).SetImageDrawable(Context.GetDrawable(Resource.Drawable.ic_playerchange_48px));
+           // view.FindViewById(Resource.Id.bottomBar).FindViewById<ImageButton>(Resource.Id.redoButton).Click += (e, args) => myViewModel.Redo();
             myViewModel.Init();
             
             return view;
             // return base.OnCreateView(inflater, container, savedInstanceState);
+        }
+
+        private void EndHalfButton_Clicked(object sender, EventArgs e)
+        {
+            string currentStatus = myViewModel.Game.Status;
+            string newStatus = "";
+            if (currentStatus == "H1")
+            {
+                newStatus = "H2";
+                myEndHalfButton.Text = "End H2";
+            }
+            else if (currentStatus == "H2")
+            {
+                newStatus = "END";
+                myEndHalfButton.Visibility = ViewStates.Invisible;
+                return;
+            }
+            myViewModel.SetGameStatus(newStatus);
+        }
+
+        private void UndoButton_Clicked(object sender, EventArgs e)
+        {
+            Snackbar snackbar = Snackbar.Make(statInputSwitcher, myViewModel.Undo(), Snackbar.LengthLong);
+            snackbar.SetAction("Dismis", v => snackbar.Dismiss());
+            snackbar.Show();
+        }
+
+        private void LeftActionButton_Clicked(object sender, EventArgs e)
+        {
+            SubstitutePlayer();
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
@@ -142,11 +176,12 @@ namespace KorfbalStatistics.Fragments
 
         private void MyViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            myGameStatus.Text = myViewModel.Game.Status;
             bool updateAll = e.PropertyName.Equals("UpdateAll");
             if (e.PropertyName.Equals(nameof(myViewModel.CurrentFunction)) || updateAll)
             {
                 statButtonLayout.FindViewById<TextView>(Resource.Id.headerButtonText).Text = myViewModel.CurrentFunction.GetDescription();
-                string turnoverText = myViewModel.CurrentFunction == EZoneFunction.Attack ? "Turnover" : "Interception";
+                string turnoverText = myViewModel.CurrentFunction == EZoneFunction.Attack ? "Balverlies" : "Onderschepping";
                 statButtonLayout.FindViewById<Button>(Resource.Id.turnoverButton).Text = turnoverText;
             }
             if (e.PropertyName.Equals(nameof(myViewModel.HomeScore)) || updateAll)
@@ -159,7 +194,7 @@ namespace KorfbalStatistics.Fragments
             }
             if (e.PropertyName.Equals("Shot") || updateAll)
             {
-                cardViewLeft.FindViewById<TextView>(Resource.Id.headerText).Text = "Shots";
+                cardViewLeft.FindViewById<TextView>(Resource.Id.headerText).Text = "Schoten";
                 cardViewLeft.FindViewById<TextView>(Resource.Id.statText).Text = myViewModel.GetShotCount().ToString();
 
                 cardViewRight.FindViewById<TextView>(Resource.Id.headerText).Text = "Rebounds";
@@ -187,7 +222,12 @@ namespace KorfbalStatistics.Fragments
         private void RadioButtonGroup_CheckedChange(object sender, RadioGroup.CheckedChangeEventArgs e)
         {
             ItemIdHolderRadioGroup radioGroup = sender as ItemIdHolderRadioGroup;
-            okButton.Enabled = radioGroup.GetSelected() != null;
+            ItemHolderRadioButton button = radioGroup.FindViewById<ItemHolderRadioButton>(e.CheckedId);
+            //ItemHolderRadioButton selectedButton = radioGroup.GetSelected();
+            myViewModel.CurrentStatistic.SetStatistic(myCurrentStatToGet, button.ItemId);
+            myCurrentStatToGet = myViewModel.CurrentStatistic.GetNextStatistic();
+            SetStatisticLayout();
+            radioGroup.DeselectAll();
         }
 
         private void SetStatisticLayout()
@@ -197,6 +237,7 @@ namespace KorfbalStatistics.Fragments
                 case EStatisticType.DefensiveRebound:
                     statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.twoChoice));
                     actionButtonLayout.Visibility = ViewStates.Visible;
+                    statInputSwitcher.CurrentView.FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).SetToDefault();
                     break;
                 case EStatisticType.Goal:
                 case EStatisticType.ConcededGoal:
@@ -238,15 +279,25 @@ namespace KorfbalStatistics.Fragments
         {
             myCurrentPlayers = myViewModel.GetPlayers();
             myCurrentPlayers.Add(ServiceLocator.GetService<PlayersService>().GetUnkownPlayer());
-            if (myCurrentStatToGet == EStatisticType.Rebound || myCurrentStatToGet == EStatisticType.Assist)
+            if (myCurrentStatToGet == EStatisticType.Rebound)
             {
                 Player additionalPlayer = new Player {
                     Id = Guid.Empty,
-                    FirstName = myViewModel.CurrentFunction == EZoneFunction.Attack ? "NONE" : "LDODK",
+                    FirstName = myViewModel.CurrentFunction == EZoneFunction.Attack ? "Tegenstander" : "LDODK",
                     Number = -1
                 };
                 myCurrentPlayers.Add(additionalPlayer);
-            } 
+            }
+            if (myCurrentStatToGet == EStatisticType.Turnover || myCurrentStatToGet == EStatisticType.Interception)
+            {
+                Player additionalPlayer = new Player
+                {
+                    Id = Guid.Empty,
+                    FirstName = "Andere reden",
+                    Number = -1
+                };
+                myCurrentPlayers.Add(additionalPlayer);
+            }
             var current = statInputSwitcher.CurrentView;
             var rg = current.FindViewById<ItemIdHolderRadioGroup>(Resource.Id.radioGroup1);
             rg.SetPlayers(myCurrentPlayers);
@@ -287,6 +338,34 @@ namespace KorfbalStatistics.Fragments
                 myViewModel.CurrentStatistic = new ConcededShotCommand(myViewModel);
             myCurrentStatToGet = myViewModel.CurrentStatistic.GetNextStatistic();
             SetStatisticLayout();
+        }
+
+        private void SubstitutePlayer()
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+            LayoutInflater inflater = LayoutInflater;
+            View view = inflater.Inflate(Resource.Layout.substitute_layout, null);
+
+            MultiLineRadioGroup inGameGroup = view.FindViewById<MultiLineRadioGroup>(Resource.Id.inGamePlayersGroup);
+            MultiLineRadioGroup subsGroup = view.FindViewById<MultiLineRadioGroup>(Resource.Id.subsGroup);
+
+            inGameGroup.SetPlayers(myViewModel.InGamePlayers);
+            subsGroup.SetPlayers(myViewModel.SubstituePlayers);
+
+            //string text = MainViewModel.Instance.GetDb().ToString();
+            builder.SetView(view)
+                .SetPositiveButton("OK", (s, args) =>
+                {
+                    Guid inGamePlayer = inGameGroup.GetSelected().ItemId;
+                    Guid sub = subsGroup.GetSelected().ItemId;
+                    if (inGamePlayer == null || sub == null)
+                        return;
+                    myViewModel.Substitute(inGamePlayer, sub);
+                })
+                .SetNegativeButton("Cancel", (s, args) => {
+                });
+
+            builder.Show();
         }
 
     }

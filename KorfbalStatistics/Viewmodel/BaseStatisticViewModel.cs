@@ -41,9 +41,9 @@ namespace KorfbalStatistics.Viewmodel
         }
 
         public int GoalCount => myAttacks.Where(a => a.Goal != null && !a.DbAttack.IsOpponentAttack).Count();
-        public int InterceptionCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack
+        public int InterceptionCount => myAttacks.Where(a => a.DbAttack.IsOpponentAttack
                                                             && a.DbAttack.TurnoverPlayerId != null).Count();
-        public int TurnoverCount => myAttacks.Where(a => a.DbAttack.IsOpponentAttack
+        public int TurnoverCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack
                                                             && a.DbAttack.TurnoverPlayerId != null).Count();
         public int ShotClokcOverrideCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack
                                                             && a.DbAttack.IsSchotClockOverride).Count();
@@ -62,6 +62,8 @@ namespace KorfbalStatistics.Viewmodel
             Dictionary<Guid, int> goals = new Dictionary<Guid, int>();
             myAttacks.ForEach(a =>
             {
+                if (a.DbAttack.IsOpponentAttack)
+                    return;
                 if (a.Goal == null)
                     return;
                 if (goals.ContainsKey(a.Goal.GoalTypeId))

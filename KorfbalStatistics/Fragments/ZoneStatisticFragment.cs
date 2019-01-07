@@ -47,7 +47,7 @@ namespace KorfbalStatistics.Fragments
             var attackDefenceGroup = view.FindViewById<MultiLineRadioGroup>(Resource.Id.attackDefenceGroup);
             attackDefenceGroup.CheckedChanged += AttackDefenceGroup_CheckedChanged;
 
-            view.FindViewById(Resource.Id.header).FindViewById<TextView>(Resource.Id.headerText).Text = "Zone statistic overview";
+            view.FindViewById(Resource.Id.header).FindViewById<TextView>(Resource.Id.headerText).Text = "Vak statistieken overzicht";
             view.FindViewById(Resource.Id.header).FindViewById<TextView>(Resource.Id.teamName).Visibility = ViewStates.Invisible;
 
             LoadStats(); 
@@ -59,7 +59,7 @@ namespace KorfbalStatistics.Fragments
         {
             var group = sender as ItemIdHolderRadioGroup;
             ItemHolderRadioButton selectedButton = group.GetSelected();
-            if (selectedButton.Text.Equals("Defence"))
+            if (selectedButton.Text.Equals("Verdediging"))
             {
                 myViewModel.CurrentStatisticViewModel.CurrentZoneToShowFilter = EZoneFunction.Defence;
             }
@@ -78,25 +78,25 @@ namespace KorfbalStatistics.Fragments
             var viewModel = myViewModel.CurrentStatisticViewModel;
             viewModel.SetAttacks();
 
-            statShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Goals / Shots";
+            statShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Doelpunten / schoten";
             statShot.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.GoalCount + " / " + viewModel.ShotCount;
             double percentageGoal = (Convert.ToDouble(viewModel.GoalCount) / viewModel.ShotCount) * 100;
 
             statShot.FindViewById<TextView>(Resource.Id.statDetailText).Text = string.Format("{0}%", percentageGoal);
 
-            statRebound.FindViewById<TextView>(Resource.Id.headerText).Text = "offensive / defensive rebounds";
+            statRebound.FindViewById<TextView>(Resource.Id.headerText).Text = "aanvallende / verdedigende rebounds";
             statRebound.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.ReboundCount + " / " + viewModel.DevensiveReboundCount ;
 
-            statInterception.FindViewById<TextView>(Resource.Id.headerText).Text = "Interceptions / Turnovers";
+            statInterception.FindViewById<TextView>(Resource.Id.headerText).Text = "Onderscheppingen / balverlies";
             statInterception.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.InterceptionCount + " / " + viewModel.TurnoverCount;
 
-            statShotclock.FindViewById<TextView>(Resource.Id.headerText).Text = "Shotclock override";
+            statShotclock.FindViewById<TextView>(Resource.Id.headerText).Text = "Schotklok overschrijding";
             statShotclock.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.ShotClokcOverrideCount.ToString();
 
-            statConcededShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Conceded goals / shots";
+            statConcededShot.FindViewById<TextView>(Resource.Id.headerText).Text = "Doelpunten / schoten tegen";
             statConcededShot.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.ConcededGoalCount + " / " + viewModel.ConcededShotCount;
 
-            statAttackCount.FindViewById<TextView>(Resource.Id.headerText).Text = "Number of attacks";
+            statAttackCount.FindViewById<TextView>(Resource.Id.headerText).Text = "Aantal aanvallen";
             statAttackCount.FindViewById<TextView>(Resource.Id.statText).Text = viewModel.AttackCount.ToString();
 
 

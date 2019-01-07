@@ -80,6 +80,8 @@
     <Compile Include="CustomviewClasses\MultiLineRadioGroup.cs" />
     <Compile Include="CustomviewClasses\RoundedTextView.cs" />
     <Compile Include="CustomviewClasses\RoundedTextViewLayout.cs" />
+    <Compile Include="CustomviewClasses\SquaredTextView.cs" />
+    <Compile Include="CustomviewClasses\SquaredTextViewLayout.cs" />
     <Compile Include="CustomviewClasses\StatisticCardView.cs" />
     <Compile Include="Fragments\AllStatisticFragment.cs" />
     <Compile Include="Fragments\FormationFragment.cs" />
@@ -394,6 +396,14 @@
     <AndroidResource Include="Resources\layout\base_statistic_layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\substitute_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_playerchange_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

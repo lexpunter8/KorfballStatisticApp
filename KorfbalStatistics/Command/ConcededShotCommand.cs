@@ -38,13 +38,16 @@ namespace KorfbalStatistics.Command
 
         public override void Undo()
         {
-            DbAttackShot shotPlayer = myAttack.Shots.FirstOrDefault(p => p.PlayerId == GetStatistic(EStatisticType.Shot));
+            DbAttackShot shotPlayer = myAttack.Shots.FirstOrDefault();
+            if (shotPlayer == null)
+                return;
             if (shotPlayer.Count > 1)
                 shotPlayer.Count--;
             else
                 myAttack.Shots.Remove(shotPlayer);
 
-            DbAttackRebound reboundPlayer = myAttack.Rebounds.FirstOrDefault(p => p.PlayerId == GetStatistic(EStatisticType.Rebound));
+            DbAttackRebound reboundPlayer = myAttack.Rebounds.FirstOrDefault();
+
             if (reboundPlayer == null)
                 return;
             if (reboundPlayer.Count > 1)

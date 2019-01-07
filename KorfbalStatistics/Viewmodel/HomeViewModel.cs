@@ -31,6 +31,7 @@ namespace KorfbalStatistics.Viewmodel
                 Opponent = opponent,
                 TeamId = myGameDbManager.GetTeamIdByUserId(MainViewModel.Instance.LoggedInUser.Id),
                 IsHome = isHome,
+                Status = "H1",
                 Date = date
             };
             myGameDbManager.AddGame(game);

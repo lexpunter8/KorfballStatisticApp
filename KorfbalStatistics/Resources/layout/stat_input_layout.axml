@@ -78,7 +78,7 @@
 					android:layout_weight="1"
 					android:layout_margin="5dp"
 					android:layout_height="wrap_content"
-					android:text="OPPONENT"
+					android:text="Tegenstander"
 					android:id="@+id/radioButton2"
 					custom:isSquared="true"
 					custom:itemId="4aeab093-8e88-4b41-aa4d-1aa41ba7a8fd" />

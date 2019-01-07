@@ -17,11 +17,54 @@ namespace KorfbalStatistics.Viewmodel
             myDbManager = dbManager;
             myGameDbManager = myDbManager.GameDbManager;
             Game = MainViewModel.Instance.CurrentGame;
-            StartingFunction = Game.IsHome ? EZoneFunction.Attack : EZoneFunction.Defence;
-            CurrentFunction = Game.IsHome ? EZoneFunction.Attack : EZoneFunction.Defence;
-            CurrentAttack = new Attack(CurrentFunction, StartingFunction, Game.Id, true);
+            SetFormation();
 
             myCommandManager = new CommandManager();
+        }
+
+        private void SetFormation()
+        {
+            DbAttack lastAttack = myGameDbManager.GetLastAttackOfGame(Game.Id);
+            
+            if (lastAttack == null) // start game
+            {
+                StartingFunction = Game.IsHome ? EZoneFunction.Attack : EZoneFunction.Defence;
+                CurrentFunction = Game.IsHome ? EZoneFunction.Attack : EZoneFunction.Defence;
+
+            }
+            else
+            {
+                bool isGameH1 = Game.Status == "H1";
+                if (lastAttack.IsFirstHalf == isGameH1)
+                {
+                    // half is started
+                    StartingFunction = lastAttack.ZoneStartFunction == "A" ? EZoneFunction.Attack : EZoneFunction.Defence;
+                    CurrentFunction = lastAttack.IsOpponentAttack ? EZoneFunction.Defence : EZoneFunction.Attack;
+                    ChangeFunction(lastAttack.GoalId != null);
+
+                } else
+                {
+                    // start H2
+                    string lastDefendingZone = "";
+                    if (lastAttack.IsOpponentAttack)                    
+                        lastDefendingZone = lastAttack.ZoneStartFunction == "A" ? "A" : "D";                    
+                    else
+                        lastDefendingZone = lastAttack.ZoneStartFunction == "A" ? "D" : "A";
+
+                    StartingFunction = lastAttack.ZoneStartFunction == "A" ? EZoneFunction.Attack : EZoneFunction.Defence;
+                    CurrentFunction = lastAttack.IsOpponentAttack ? EZoneFunction.Defence : EZoneFunction.Attack;
+                    ChangeFunction(lastAttack.GoalId != null);
+
+                    var newCurrentFunction = !Game.IsHome ? EZoneFunction.Attack : EZoneFunction.Defence;
+                    if (newCurrentFunction != CurrentFunction)
+                    {
+                        StartingFunction = StartingFunction == EZoneFunction.Attack ? EZoneFunction.Defence : EZoneFunction.Attack;
+                    }
+                    CurrentFunction = newCurrentFunction;
+                    Init();
+                }
+            }
+            CurrentAttack = new Attack(CurrentFunction, StartingFunction, Game.Id, true);
         }
 
         private DbManager myDbManager { get; set; }
@@ -88,13 +131,18 @@ namespace KorfbalStatistics.Viewmodel
             // 1 2 3 0 1 2 3 0 1 2
         }
         private List<Player> myCurrentPlayers;
-
+        public List<Player> SubstituePlayers => myCurrentPlayers.Where(p => p.CurrentZoneFunction == EPlayerFunction.Substitute).ToList();
+        public List<Player> InGamePlayers => myCurrentPlayers.Where(p => p.CurrentZoneFunction != EPlayerFunction.Substitute).ToList();
+        
         public List<Player> CurrentPlayers
         {
             get
             {
                 if (myCurrentPlayers == null)
+                {
                     myCurrentPlayers = myFormationService.GetFormationForGame(gameId: Game.Id).ToList();
+
+                }
                 return myCurrentPlayers;
             }
         }
@@ -102,9 +150,9 @@ namespace KorfbalStatistics.Viewmodel
         public List<Player> GetPlayers()
         {
             if (StartingFunction == EZoneFunction.Attack)
-                return CurrentPlayers.Where(p => p.ZoneFunction == EPlayerFunction.Attack).ToList();
+                return CurrentPlayers.Where(p => p.CurrentZoneFunction == EPlayerFunction.Attack).ToList();
             if (StartingFunction == EZoneFunction.Defence)
-                return CurrentPlayers.Where(p => p.ZoneFunction == EPlayerFunction.Defence).ToList();
+                return CurrentPlayers.Where(p => p.CurrentZoneFunction == EPlayerFunction.Defence).ToList();
             else return null;
         }
 
@@ -124,6 +172,7 @@ namespace KorfbalStatistics.Viewmodel
         public void SetGameStatus(string status)
         {
             Game.Status = status;
+            SetFormation();
         }
         public int GetScore(bool opponentScore)
         {
@@ -163,10 +212,11 @@ namespace KorfbalStatistics.Viewmodel
             OnPropertyChanged("UpdateAll");
         }
 
-        public void Undo()
+        public string Undo()
         {
-            myCommandManager.UndoLastAction();
+            string text = "Undone: " + myCommandManager.UndoLastAction();
             OnPropertyChanged("UpdateAll");
+            return text;
         }
 
         public string ExecuteCommand()
@@ -178,6 +228,18 @@ namespace KorfbalStatistics.Viewmodel
         public void RemoveCommand()
         {
             myCommandManager.RemoveLastAction();
+        }
+
+        public void Substitute(Guid inGamePlayer, Guid sub)
+        {
+            Player subPlayer = myCurrentPlayers.FirstOrDefault(p => p.Id == sub);
+            Player ingamePlayer = myCurrentPlayers.FirstOrDefault(p => p.Id == inGamePlayer);
+
+            subPlayer.CurrentZoneFunction = ingamePlayer.CurrentZoneFunction;
+            ingamePlayer.CurrentZoneFunction = EPlayerFunction.Substitute;
+
+            DbManager.Instance.FormationDbManager.UpdateFormation(CurrentPlayers, Game.Id);
+            Init();
         }
     }
 }

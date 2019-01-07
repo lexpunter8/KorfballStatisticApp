@@ -46,7 +46,8 @@ namespace KorfbalStatistics.Model
         public Guid PlayerId { get; set; }
         public Guid GameId { get; set; }
         [MaxLength(1)]
-        public string Function { get; set; }
+        public string CurrentFunction { get; set; }
+        public string StartFunction { get; set; }
         public bool IsSynchronised { get; set; }
     }
     [Table("Game")]

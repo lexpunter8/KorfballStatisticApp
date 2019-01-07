@@ -107,5 +107,10 @@ namespace KorfbalStatistics.Model
         {
             return myDbConnection.Table<DbGoalType>().FirstOrDefault(g => g.Id.Equals(goalTypeId));
         }
+
+        public DbAttack GetLastAttackOfGame(Guid gameId)
+        {
+            return myDbConnection.Table<DbAttack>().LastOrDefault(a => a.GameId == gameId);
+        }
     }
 }

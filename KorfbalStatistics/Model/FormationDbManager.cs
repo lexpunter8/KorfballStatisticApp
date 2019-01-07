@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using SQLite;
+using KorfbalStatistics.CustomExtensions;
 
 namespace KorfbalStatistics.Model
 {
@@ -32,6 +33,20 @@ namespace KorfbalStatistics.Model
         public DbFormation[] GetFormationByGameId(Guid gameId)
         {
             return myDbConnection.Table<DbFormation>().Where(f => f.GameId.Equals(gameId)).ToArray();
+        }
+
+        public void UpdateFormation(List<Player> formation, Guid gameId)
+        {
+            List<DbFormation> dbFormation = GetFormationByGameId(gameId).ToList();
+
+            dbFormation.ForEach(dbf =>
+            {
+                Player player = formation.FirstOrDefault(p => p.Id == dbf.PlayerId);
+                if (player == null)
+                    return;
+                dbf.CurrentFunction = player.CurrentZoneFunction.GetDescription();
+                myDbConnection.Update(dbf);
+            });
         }
     }
 }

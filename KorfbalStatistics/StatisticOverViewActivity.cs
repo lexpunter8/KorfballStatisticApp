@@ -38,13 +38,13 @@ namespace KorfbalStatistics
             {
                 var type = tab.GetType();
                 if (type == typeof(ZoneStatisticViewModel))
-                    myTabHost.AddTab(myTabHost.NewTabSpec("zone").SetIndicator("Zone"),
+                    myTabHost.AddTab(myTabHost.NewTabSpec("zone").SetIndicator("Vak"),
                         Java.Lang.Class.FromType(typeof(ZoneStatisticFragment)), null);
                 if (type == typeof(TeamStatisticViewModel))
                     myTabHost.AddTab(myTabHost.NewTabSpec("team").SetIndicator("Team"),
                         Java.Lang.Class.FromType(typeof(AllStatisticFragment)), null);
                 if (type == typeof(PlayerStatisticViewModel))
-                    myTabHost.AddTab(myTabHost.NewTabSpec("player").SetIndicator("Player"),
+                    myTabHost.AddTab(myTabHost.NewTabSpec("player").SetIndicator("Speler"),
                         Java.Lang.Class.FromType(typeof(PlayerStatisticFragment)), null);
 
             }

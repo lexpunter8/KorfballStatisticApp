@@ -14,7 +14,7 @@
 		android:id="@+id/radioGroup1"
 		android:orientation="vertical">
 		<TextView
-			android:text="Goaltype"
+			android:text="Goal type"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:minWidth="25px"
@@ -37,7 +37,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:layout_height="wrap_content"
-				android:text="Short shot"
+				android:text="Kleine kans"
 				android:id="@+id/radioButton1"
 				android:layout_margin="5dp"
 				custom:itemId="b8ba5726-b2bb-4ab8-a52f-fd041fcb0d85"
@@ -47,7 +47,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:layout_height="wrap_content"
-				android:text="Medium shot"
+				android:text="Korts schot"
 				android:layout_margin="5dp"
 				android:id="@+id/radioButton2"
 				custom:itemId="d8a3a228-94df-4060-af95-8f6a1a1bf93c"
@@ -56,7 +56,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:layout_height="wrap_content"
-				android:text="Long shot"
+				android:text="Afstandsschot"
 				android:layout_margin="5dp"
 				android:id="@+id/radioButton3"
 				custom:itemId="9ae1c88c-4469-4ad9-a65d-40a825696672"
@@ -75,7 +75,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:layout_height="wrap_content"
-				android:text="Runnig in shot"
+				android:text="Doorloopbal"
 				android:layout_margin="5dp"
 				android:id="@+id/radioButton111"
 				custom:itemId="4d70f737-d787-43fb-b9c8-2ed40049f555"
@@ -83,7 +83,7 @@
 			/>
 			<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
 				android:layout_height="wrap_content"
-				android:text="Free-throw"
+				android:text="Vrijebal"
 				android:layout_margin="5dp"
 				android:id="@+id/radioButton12"
 				android:layout_width="0dp"
@@ -92,7 +92,7 @@
 				custom:isSquared="true"/>
 			<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
 				android:layout_height="wrap_content"
-				android:text="Penalty"
+				android:text="Strafworp"
 				android:layout_margin="5dp"
 				android:id="@+id/radioButton13"
 				android:layout_width="0dp"
@@ -109,7 +109,7 @@
 			android:id="@+id/linearLayout3"
 			android:layout_weight="1">
 			<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
-				android:text="Unkown"
+				android:text="Onbekend"
 				android:layout_margin="5dp"
 				android:layout_width="0dp"
 				android:layout_weight="1"

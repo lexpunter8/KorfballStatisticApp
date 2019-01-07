@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/separator"
-                android:id="@+id/button1"
+                android:id="@+id/endHalfButton"
                 android:layout_centerHorizontal="true"
                 android:backgroundTint="@color/accent" />
         </RelativeLayout>
@@ -126,14 +126,14 @@
 				android:layout_marginLeft="10dp" />
 		</LinearLayout>
 	</LinearLayout>
-	<KorfbalStatistics.CustomviewClasses.RoundedTextViewLayout
+	<KorfbalStatistics.CustomviewClasses.SquaredTextViewLayout
 		android:orientation="horizontal"
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/currentPlayersLayout">
-	</KorfbalStatistics.CustomviewClasses.RoundedTextViewLayout>
+	</KorfbalStatistics.CustomviewClasses.SquaredTextViewLayout>
 	<include
 		layout="@layout/stat_input_layout"
 		android:layout_height="wrap_content"

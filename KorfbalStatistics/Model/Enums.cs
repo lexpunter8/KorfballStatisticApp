@@ -7,43 +7,46 @@ namespace KorfbalStatistics.Model
         public enum EZoneFunction
         {
             None,
-            [Description("Attack")]
+            [Description("Aanval")]
             Attack,
-            [Description("Defence")]
+            [Description("Verdediging")]
             Defence
         }
 
         public enum EPlayerFunction
         {
+            [Description("A")]
             Attack,
+            [Description("D")]
             Defence,
+            [Description("S")]
             Substitute
         }
 
         public enum EStatisticType
         {
             None,
-            [Description("Who made the turnover?")]
+            [Description("Wie verloor de bal?")]
             Turnover,
-            [Description("Who made the interception?")]
+            [Description("Wie maakte de onderschepping?")]
             Interception,
-            [Description("Who scored?")]
+            [Description("Wie maakt het doelpunt?")]
             Goal,
-            [Description("Who conceded the goal?")]
+            [Description("Wie kreeg het doelpunt tegen?")]
             ConcededGoal,
-            [Description("Against who was the shot?")]
+            [Description("Tegen wie was het schot?")]
             ConcededShot,
-            [Description("who took the shot?")]
+            [Description("Wie nam het schot?")]
             Shot,
             [Description("")]
             ShotclockOverride,
-            [Description("Who gave the assist?")]
+            [Description("Wie gaf de assist?")]
             Assist,
-            [Description("Who got the rebound?")]
+            [Description("Wie had de rebound?")]
             Rebound,
-            [Description("Who got the rebound?")]
+            [Description("Wie had de rebound?")]
             DefensiveRebound,
-            [Description("How was the goal made?")]
+            [Description("Hoe is het doelpunt gescoord?")]
             GoalType
         }
 

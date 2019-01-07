@@ -32,7 +32,7 @@
 				android:layout_height="wrap_content"
 				android:id="@+id/linearLayout43">
 				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
-					android:text="Attack"
+					android:text="Aanval"
 					android:layout_width="0dp"
 					android:layout_weight="1"
 					android:layout_margin="5dp"
@@ -41,7 +41,7 @@
 					android:id="@+id/itemHolderRadioButton2"
 					custom:isSquared="true"/>
 				<KorfbalStatistics.CustomviewClasses.ItemHolderRadioButton
-					android:text="Defence"
+					android:text="Verdediging"
 					android:layout_width="0dp"
 					android:layout_weight="1"
 					android:layout_margin="5dp"

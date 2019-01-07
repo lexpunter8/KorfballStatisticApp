@@ -32,20 +32,29 @@ namespace KorfbalStatistics.Services
 
                 DbPlayer dbPlayer = DbManager.Instance.PlayerDbManager.GetPlayerById(f.PlayerId);
 
-                EPlayerFunction function;
-                if (f.Function.Equals("A"))
-                    function = EPlayerFunction.Attack;
-                else if (f.Function.Equals("D"))
-                    function = EPlayerFunction.Defence;
+                EPlayerFunction currentFunction;
+                if (f.CurrentFunction.Equals("A"))
+                    currentFunction = EPlayerFunction.Attack;
+                else if (f.CurrentFunction.Equals("D"))
+                    currentFunction = EPlayerFunction.Defence;
                 else
-                    function = EPlayerFunction.Substitute;
+                    currentFunction = EPlayerFunction.Substitute;
+
+                EPlayerFunction startFunction;
+                if (f.StartFunction.Equals("A"))
+                    startFunction = EPlayerFunction.Attack;
+                else if (f.StartFunction.Equals("D"))
+                    startFunction = EPlayerFunction.Defence;
+                else
+                    startFunction = EPlayerFunction.Substitute;
 
                 players.Add(new Player
                 {
                     Id = dbPlayer.Id,
                     Abbrevation = dbPlayer.Abbrevation,
                     Number = dbPlayer.Number,
-                    ZoneFunction = function,
+                    CurrentZoneFunction = currentFunction,
+                    StartZoneFunction = startFunction,
                     Name = dbPlayer.Name,
                     FirstName = dbPlayer.FirstName
                 });
@@ -66,9 +75,9 @@ namespace KorfbalStatistics.Services
 
             formation.ForEach(f =>
             {
-                if (f.Function.Equals("A"))
+                if (f.CurrentFunction.Equals("A"))
                     attackersCount++;
-                if (f.Function.Equals("D"))
+                if (f.CurrentFunction.Equals("D"))
                     defendersCount++;
             });
 

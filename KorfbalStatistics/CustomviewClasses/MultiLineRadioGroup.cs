@@ -91,8 +91,8 @@ namespace KorfbalStatistics.CustomviewClasses
             int count = myCurrentPlayers.Count;
             int layoutCount = ChildCount;
 
-            int childPerLayout = 2;//count / layoutCount;
-
+            double doubleChild = Convert.ToDouble(count) / layoutCount;
+            int childPerLayout = Convert.ToInt16(Math.Ceiling(doubleChild));
             int playerIndex = 0;
             for (int child = 0; child < ChildCount; child++)
             {

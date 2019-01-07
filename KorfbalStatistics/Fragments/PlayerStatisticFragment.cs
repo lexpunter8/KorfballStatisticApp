@@ -37,6 +37,11 @@ namespace KorfbalStatistics.Fragments
             playerList.SetAdapter(new PlayerStatisticsAdapter(playerStats, Activity));
             playerList.ItemClick += PlayerList_ItemClick;
 
+
+            view.FindViewById(Resource.Id.header).FindViewById<TextView>(Resource.Id.headerText).Text = "Speler statistieken";
+            view.FindViewById(Resource.Id.header).FindViewById<TextView>(Resource.Id.teamName).Visibility = ViewStates.Invisible;
+
+
             return view;
         }
 

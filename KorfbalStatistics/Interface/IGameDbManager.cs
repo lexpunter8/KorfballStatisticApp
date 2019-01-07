@@ -21,5 +21,6 @@ namespace KorfbalStatistics.Interface
 
         Attack[] GetFullAttackForGame(Guid gameId);
         DbGoalType GetGoalTypeById(Guid goalTypeId);
+        DbAttack GetLastAttackOfGame(Guid gameId);
     }
 }

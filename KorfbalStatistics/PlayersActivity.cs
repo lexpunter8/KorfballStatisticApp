@@ -36,7 +36,7 @@ namespace KorfbalStatistics
             myPlayersList.ItemClick += PlayersList_ItemClick;
             FindViewById<FloatingActionButton>(Resource.Id.addPlayerButton).Click += AddPlayerButton_Click;
             FindViewById<RoundedTextView>(Resource.Id.teamName).Text = MainViewModel.Instance.Team.Name;
-            FindViewById<TextView>(Resource.Id.headerText).Text = "Players";
+            FindViewById<TextView>(Resource.Id.headerText).Text = "Spelers";
 
         }
 

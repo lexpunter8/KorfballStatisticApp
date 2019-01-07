@@ -50,7 +50,7 @@ namespace KorfbalStatistics
             FindViewById<ImageButton>(Resource.Id.undoButton).Visibility = ViewStates.Invisible;
 
             FindViewById<RoundedTextView>(Resource.Id.teamName).Text = MainViewModel.Instance.Team.Name;
-            FindViewById<TextView>(Resource.Id.headerText).Text = "Games";
+            FindViewById<TextView>(Resource.Id.headerText).Text = "Wedstrijden";
 
             myViewModel.GetGames();
         }
