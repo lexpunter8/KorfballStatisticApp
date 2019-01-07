@@ -27,7 +27,6 @@ namespace KorfbalStatistics.Fragments
         private LinearLayout statButtonLayout;
         private LinearLayout actionButtonLayout;
         private ViewFlipper statInputSwitcher;
-        private Button okButton;
         private TextView myHomeScoreTextView, myAwayScoreTextView, myGameStatus;
         private RoundedTextViewLayout myCurrentPlayersLayout;
         public override void OnCreate(Bundle savedInstanceState)
@@ -67,12 +66,11 @@ namespace KorfbalStatistics.Fragments
 
             view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<Button>(Resource.Id.backButton).Click += BackButton_Clicked; ;
             view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<Button>(Resource.Id.cancelButton).Click += CancelButtonClicked;
-            okButton = view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<Button>(Resource.Id.okButton);
-            okButton.Click += StatsInput_OkButton_Clicked;
+
             myViewModel.PropertyChanged += MyViewModel_PropertyChanged;
             statButtonLayout = statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout);
             actionButtonLayout = view.FindViewById<LinearLayout>(Resource.Id.statsInput).FindViewById<LinearLayout>(Resource.Id.actionButtons);
-            okButton.Enabled = false;
+
             statInputSwitcher.FindViewById(Resource.Id.four4Choice).FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).CheckedChanged += GameStatisticsActivity_CheckedChanged;
             statInputSwitcher.FindViewById(Resource.Id.twoChoice).FindViewById<ItemIdHolderRadioGroup>(Resource.Id.radioGroup1).CheckedChange += RadioButtonGroup_CheckedChange;
             statInputSwitcher.FindViewById(Resource.Id.goaltype).FindViewById<MultiLineRadioGroup>(Resource.Id.radioGroup1).CheckedChanged += GameStatisticsActivity_CheckedChanged;
@@ -173,21 +171,14 @@ namespace KorfbalStatistics.Fragments
 
         }
 
-        private void StatsInput_OkButton_Clicked(object sender, EventArgs e)
-        {
-            ItemIdHolderRadioGroup statsGroup = statInputSwitcher.CurrentView.FindViewById<ItemIdHolderRadioGroup>(Resource.Id.radioGroup1);
-            ItemHolderRadioButton selectedButton = statsGroup.GetSelected();
-            myViewModel.CurrentStatistic.SetStatistic(myCurrentStatToGet, selectedButton.ItemId);
-            myCurrentStatToGet = myViewModel.CurrentStatistic.GetNextStatistic();
-            statsGroup.DeselectAll();
-            SetStatisticLayout();
-            okButton.Enabled = false;
-        }
-
         private void RadioButtonGroup_CheckedChange(object sender, RadioGroup.CheckedChangeEventArgs e)
         {
             ItemIdHolderRadioGroup radioGroup = sender as ItemIdHolderRadioGroup;
-            okButton.Enabled = radioGroup.GetSelected() != null;
+            ItemHolderRadioButton selectedButton = radioGroup.GetSelected();
+            myViewModel.CurrentStatistic.SetStatistic(myCurrentStatToGet, selectedButton.ItemId);
+            myCurrentStatToGet = myViewModel.CurrentStatistic.GetNextStatistic();
+            SetStatisticLayout();
+            radioGroup.DeselectAll();
         }
 
         private void SetStatisticLayout()
@@ -240,7 +231,7 @@ namespace KorfbalStatistics.Fragments
             {
                 Player additionalPlayer = new Player {
                     Id = Guid.Empty,
-                    FirstName = myViewModel.CurrentFunction == EZoneFunction.Attack ? "NONE" : "LDODK",
+                    FirstName = myViewModel.CurrentFunction == EZoneFunction.Attack ? "Opponent" : "LDODK",
                     Number = -1
                 };
                 myCurrentPlayers.Add(additionalPlayer);

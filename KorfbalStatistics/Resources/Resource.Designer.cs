@@ -2543,8 +2543,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
-			// aapt resource value: 0x7f08012e
-			public const int action_settings = 2131231022;
+			// aapt resource value: 0x7f08012d
+			public const int action_settings = 2131231021;
 			
 			// aapt resource value: 0x7f0800f5
 			public const int action_text = 2131230965;
@@ -2573,8 +2573,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080038
 			public const int always = 2131230776;
 			
-			// aapt resource value: 0x7f08011b
-			public const int appBarLayout1 = 2131231003;
+			// aapt resource value: 0x7f08011a
+			public const int appBarLayout1 = 2131231002;
 			
 			// aapt resource value: 0x7f0800a5
 			public const int assistIcon = 2131230885;
@@ -2606,14 +2606,14 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080044
 			public const int auto = 2131230788;
 			
-			// aapt resource value: 0x7f080120
-			public const int awayTeamScore = 2131231008;
+			// aapt resource value: 0x7f08011f
+			public const int awayTeamScore = 2131231007;
 			
 			// aapt resource value: 0x7f0800ed
 			public const int awayTeamText = 2131230957;
 			
-			// aapt resource value: 0x7f080110
-			public const int backButton = 2131230992;
+			// aapt resource value: 0x7f08010f
+			public const int backButton = 2131230991;
 			
 			// aapt resource value: 0x7f0800a2
 			public const int ballIcon = 2131230882;
@@ -2636,11 +2636,11 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08003d
 			public const int bottom = 2131230781;
 			
-			// aapt resource value: 0x7f080129
-			public const int bottomBar = 2131231017;
+			// aapt resource value: 0x7f080128
+			public const int bottomBar = 2131231016;
 			
-			// aapt resource value: 0x7f080122
-			public const int button1 = 2131231010;
+			// aapt resource value: 0x7f080121
+			public const int button1 = 2131231009;
 			
 			// aapt resource value: 0x7f08010a
 			public const int buttonLayout = 2131230986;
@@ -2696,8 +2696,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800c2
 			public const int coordinator = 2131230914;
 			
-			// aapt resource value: 0x7f080127
-			public const int currentPlayersLayout = 2131231015;
+			// aapt resource value: 0x7f080126
+			public const int currentPlayersLayout = 2131231014;
 			
 			// aapt resource value: 0x7f08006d
 			public const int custom = 2131230829;
@@ -2789,8 +2789,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800e7
 			public const int functionText = 2131230951;
 			
-			// aapt resource value: 0x7f080121
-			public const int gameStatus = 2131231009;
+			// aapt resource value: 0x7f080120
+			public const int gameStatus = 2131231008;
 			
 			// aapt resource value: 0x7f08008f
 			public const int gamesListView = 2131230863;
@@ -2801,8 +2801,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08000a
 			public const int ghost_view = 2131230730;
 			
-			// aapt resource value: 0x7f080114
-			public const int goalButton = 2131230996;
+			// aapt resource value: 0x7f080113
+			public const int goalButton = 2131230995;
 			
 			// aapt resource value: 0x7f0800d7
 			public const int goaltype = 2131230935;
@@ -2810,8 +2810,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08008e
 			public const int header = 2131230862;
 			
-			// aapt resource value: 0x7f080111
-			public const int headerButtonText = 2131230993;
+			// aapt resource value: 0x7f080110
+			public const int headerButtonText = 2131230992;
 			
 			// aapt resource value: 0x7f0800d9
 			public const int headerText = 2131230937;
@@ -2822,8 +2822,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080021
 			public const int homeAsUp = 2131230753;
 			
-			// aapt resource value: 0x7f08011f
-			public const int homeTeamScore = 2131231007;
+			// aapt resource value: 0x7f08011e
+			public const int homeTeamScore = 2131231006;
 			
 			// aapt resource value: 0x7f0800eb
 			public const int homeTeamText = 2131230955;
@@ -2834,8 +2834,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080104
 			public const int icon_group = 2131230980;
 			
-			// aapt resource value: 0x7f080117
-			public const int icons = 2131230999;
+			// aapt resource value: 0x7f080116
+			public const int icons = 2131230998;
 			
 			// aapt resource value: 0x7f08003a
 			public const int ifRoom = 2131230778;
@@ -2849,8 +2849,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080100
 			public const int info = 2131230976;
 			
-			// aapt resource value: 0x7f08011a
-			public const int interceptionButton = 2131231002;
+			// aapt resource value: 0x7f080119
+			public const int interceptionButton = 2131231001;
 			
 			// aapt resource value: 0x7f080108
 			public const int isHomeCheckBox = 2131230984;
@@ -2912,17 +2912,17 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800bc
 			public const int loginButton = 2131230908;
 			
-			// aapt resource value: 0x7f080116
-			public const int mainAttackAction = 2131230998;
+			// aapt resource value: 0x7f080115
+			public const int mainAttackAction = 2131230997;
 			
-			// aapt resource value: 0x7f08012d
-			public const int masked = 2131231021;
+			// aapt resource value: 0x7f08012c
+			public const int masked = 2131231020;
 			
 			// aapt resource value: 0x7f0800f9
 			public const int media_actions = 2131230969;
 			
-			// aapt resource value: 0x7f08012a
-			public const int message = 2131231018;
+			// aapt resource value: 0x7f080129
+			public const int message = 2131231017;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2953,9 +2953,6 @@ namespace KorfbalStatistics
 			
 			// aapt resource value: 0x7f0800fb
 			public const int notification_main_column_container = 2131230971;
-			
-			// aapt resource value: 0x7f08010f
-			public const int okButton = 2131230991;
 			
 			// aapt resource value: 0x7f080106
 			public const int opponentInputText = 2131230982;
@@ -3041,17 +3038,17 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800ad
 			public const int reboundIconStat = 2131230893;
 			
-			// aapt resource value: 0x7f080123
-			public const int relatievelayout = 2131231011;
+			// aapt resource value: 0x7f080122
+			public const int relatievelayout = 2131231010;
 			
 			// aapt resource value: 0x7f0800b7
 			public const int relativeLayout1 = 2131230903;
 			
-			// aapt resource value: 0x7f08011d
-			public const int relativeLayout3 = 2131231005;
-			
 			// aapt resource value: 0x7f08011c
-			public const int returnButton = 2131231004;
+			public const int relativeLayout3 = 2131231004;
+			
+			// aapt resource value: 0x7f08011b
+			public const int returnButton = 2131231003;
 			
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
@@ -3128,8 +3125,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08008a
 			public const int select_dialog_listview = 2131230858;
 			
-			// aapt resource value: 0x7f08011e
-			public const int separator = 2131231006;
+			// aapt resource value: 0x7f08011d
+			public const int separator = 2131231005;
 			
 			// aapt resource value: 0x7f0800ec
 			public const int seperatorText = 2131230956;
@@ -3137,14 +3134,14 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080074
 			public const int shortcut = 2131230836;
 			
-			// aapt resource value: 0x7f080115
-			public const int shotButton = 2131230997;
+			// aapt resource value: 0x7f080114
+			public const int shotButton = 2131230996;
 			
 			// aapt resource value: 0x7f0800e9
 			public const int shotCountText = 2131230953;
 			
-			// aapt resource value: 0x7f080112
-			public const int shotclockButton = 2131230994;
+			// aapt resource value: 0x7f080111
+			public const int shotclockButton = 2131230993;
 			
 			// aapt resource value: 0x7f080023
 			public const int showCustom = 2131230755;
@@ -3188,17 +3185,17 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800b1
 			public const int statAttackCount = 2131230897;
 			
-			// aapt resource value: 0x7f080125
-			public const int statCardLeft = 2131231013;
+			// aapt resource value: 0x7f080124
+			public const int statCardLeft = 2131231012;
 			
-			// aapt resource value: 0x7f080126
-			public const int statCardRight = 2131231014;
+			// aapt resource value: 0x7f080125
+			public const int statCardRight = 2131231013;
 			
 			// aapt resource value: 0x7f0800b3
 			public const int statConcededShot = 2131230899;
 			
-			// aapt resource value: 0x7f080118
-			public const int statDetailText = 2131231000;
+			// aapt resource value: 0x7f080117
+			public const int statDetailText = 2131230999;
 			
 			// aapt resource value: 0x7f0800b0
 			public const int statInterceptions = 2131230896;
@@ -3212,14 +3209,14 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f0800b5
 			public const int statShotClock = 2131230901;
 			
-			// aapt resource value: 0x7f080119
-			public const int statText = 2131231001;
+			// aapt resource value: 0x7f080118
+			public const int statText = 2131231000;
 			
-			// aapt resource value: 0x7f080128
-			public const int statsInput = 2131231016;
+			// aapt resource value: 0x7f080127
+			public const int statsInput = 2131231015;
 			
-			// aapt resource value: 0x7f080124
-			public const int statsView = 2131231012;
+			// aapt resource value: 0x7f080123
+			public const int statsView = 2131231011;
 			
 			// aapt resource value: 0x7f0800ee
 			public const int statusText = 2131230958;
@@ -3254,8 +3251,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f08001b
 			public const int text2 = 2131230747;
 			
-			// aapt resource value: 0x7f08012b
-			public const int textInputEditText1 = 2131231019;
+			// aapt resource value: 0x7f08012a
+			public const int textInputEditText1 = 2131231018;
 			
 			// aapt resource value: 0x7f0800ba
 			public const int textInputLayout1 = 2131230906;
@@ -3329,8 +3326,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080013
 			public const int transition_transform = 2131230739;
 			
-			// aapt resource value: 0x7f080113
-			public const int turnoverButton = 2131230995;
+			// aapt resource value: 0x7f080112
+			public const int turnoverButton = 2131230994;
 			
 			// aapt resource value: 0x7f0800a8
 			public const int turnoverIcon = 2131230888;
@@ -3371,8 +3368,8 @@ namespace KorfbalStatistics
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f08012c
-			public const int visible = 2131231020;
+			// aapt resource value: 0x7f08012b
+			public const int visible = 2131231019;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;

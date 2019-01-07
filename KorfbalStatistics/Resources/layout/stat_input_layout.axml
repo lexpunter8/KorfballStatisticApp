@@ -103,13 +103,6 @@
 			android:layout_gravity="right"
 			android:layout_weight="1" />
 		<Button
-			android:text="OK"
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:id="@+id/okButton"
-			android:layout_gravity="right"
-			android:layout_weight="1"/>
-		<Button
 			android:text="Back"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"

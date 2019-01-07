@@ -29,7 +29,7 @@ namespace KorfbalStatistics.Viewmodel
                 if (myInstance == null)
                     myInstance = new MainViewModel();
                 return myInstance;
-            }
+            } 
         }
         public void Data()
         {
