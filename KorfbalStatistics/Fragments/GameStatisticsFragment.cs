@@ -217,9 +217,7 @@ namespace KorfbalStatistics.Fragments
                     statInputSwitcher.DisplayedChild = statInputSwitcher.IndexOfChild(statInputSwitcher.FindViewById<LinearLayout>(Resource.Id.buttonLayout));
                     actionButtonLayout.Visibility = ViewStates.Gone;
 
-                    Snackbar snackbar = Snackbar.Make(statInputSwitcher, myViewModel.ExecuteCommand(), Snackbar.LengthLong);
-                    snackbar.SetAction("Dismis", v => snackbar.Dismiss());
-                    snackbar.Show();
+                    myViewModel.ExecuteCommand();
                     break;
             }
             TextView header = statInputSwitcher.CurrentView.FindViewById<TextView>(Resource.Id.headerText);

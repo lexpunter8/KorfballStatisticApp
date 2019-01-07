@@ -56,25 +56,6 @@ namespace KorfbalStatistics.Command
             return lastStat.Key;
         }
 
-        public string GetSnackBarText()
-        {
-            PlayersService service = ServiceLocator.GetService<PlayersService>();
-            string text = string.Empty;
-            foreach (var stat in StatisticValues)
-            {
-                string statValueText;
-                if (stat.Key == EStatisticType.GoalType)
-                    statValueText = ServiceLocator.GetService<GameService>().GetGoalTypeById(stat.Value).Name;
-                else
-                    statValueText = service.GetPlayerNameById(stat.Value);
-                text += stat.Key.GetFriendlyName() + ": " + statValueText + ", ";
-            }
-            if (text == string.Empty)
-                return StatisticType.GetFriendlyName();
-            int lastCommaIndex = text.LastIndexOf(',');
-            return text.Substring(0, lastCommaIndex);
-        }
-
         public EStatisticType StatisticType { get; set; }
         public bool IsCompleted { get; set; }
     }

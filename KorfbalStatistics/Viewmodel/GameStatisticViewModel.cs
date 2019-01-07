@@ -169,11 +169,10 @@ namespace KorfbalStatistics.Viewmodel
             OnPropertyChanged("UpdateAll");
         }
 
-        public string ExecuteCommand()
+        public void ExecuteCommand()
         {
             myCommandManager.ProccespendingCommands();
             OnPropertyChanged("UpdateAll");
-            return myCurrentStatistic.GetSnackBarText();
         }
         public void RemoveCommand()
         {
