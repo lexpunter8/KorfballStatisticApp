@@ -45,7 +45,7 @@ namespace KorfbalStatistics.Adapters
             return mydata[groupPosition].Shots.Count + mydata[groupPosition].Rebounds.Count +
                 (mydata[groupPosition].Goal != null 
                 || mydata[groupPosition].DbAttack.TurnoverPlayerId != null
-                || mydata[groupPosition].DbAttack.IsSchotClockOverride ? 1 : 0 );
+                || mydata[groupPosition].DbAttack.IsShotClockOverride ? 1 : 0 );
         }
 
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
@@ -70,7 +70,7 @@ namespace KorfbalStatistics.Adapters
                     text3.Text = dbPlayerManager.GetPlayerById(item.Goal.AssistPlayerId).FirstName;
                     text4.Text = DbManager.Instance.GameDbManager.GetGoalTypeById(item.Goal.GoalTypeId).Name;
                 }
-                else if (item.DbAttack.IsSchotClockOverride)
+                else if (item.DbAttack.IsShotClockOverride)
                 {
                     text1.Text = "SCO";
                     text2.Text = "";

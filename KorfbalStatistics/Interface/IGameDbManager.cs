@@ -6,7 +6,7 @@ namespace KorfbalStatistics.Interface
 {
     public interface IGameDbManager
     {
-        DbGame[] GetGames();
+        DbGame[] GetGamesForTeam(Guid teamId);
         Guid GetTeamIdByUserId(Guid userId);
         void AddGame(DbGame game);
         void AddAttack(DbAttack atttack);

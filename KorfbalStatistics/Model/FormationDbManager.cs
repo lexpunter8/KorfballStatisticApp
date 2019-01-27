@@ -1,33 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 using KorfbalStatistics.CustomExtensions;
+using KorfbalStatistics.Interface;
+using KorfbalStatistics.RemoteDb;
 
 namespace KorfbalStatistics.Model
 {
-    public class FormationDbManager
+    public class FormationDbManager : IFormationDbManager
     {
-        private SQLiteConnection myDbConnection;
 
-        public FormationDbManager(SQLiteConnection connection)
+        public FormationDbManager(SQLiteConnection connection, FormationRemoteDbManager remoteDb)
         {
             myDbConnection = connection;
+            myRemoteDb = remoteDb;
         }
+        private SQLiteConnection myDbConnection;
+
+        private FormationRemoteDbManager myRemoteDb { get; }
+
         public void AddFormation(List<DbFormation> dbFormations)
         {
             dbFormations.ForEach(f =>
             {
                 myDbConnection.Insert(f);
             });
+
+            myRemoteDb.AddFormation(dbFormations);
         }
 
         public DbFormation[] GetFormationByGameId(Guid gameId)

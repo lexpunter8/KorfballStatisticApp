@@ -46,7 +46,7 @@ namespace KorfbalStatistics.Viewmodel
         public int TurnoverCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack
                                                             && a.DbAttack.TurnoverPlayerId != null).Count();
         public int ShotClokcOverrideCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack
-                                                            && a.DbAttack.IsSchotClockOverride).Count();
+                                                            && a.DbAttack.IsShotClockOverride).Count();
         public int AttackCount => myAttacks.Where(a => !a.DbAttack.IsOpponentAttack).Count();
         public int AssistCount { get; set; }
         public PlotModel PlotModel => CreatePlot();

@@ -1,5 +1,6 @@
 ﻿using KorfbalStatistics.Interface;
 using KorfbalStatistics.Model;
+using KorfbalStatistics.RemoteDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace KorfbalStatistics.Services
     public class GameService : IGameService
     {
         private readonly GameDbManager myGameDbManager;
+        private readonly RemoteDbManager myRemoteDbManager;
 
-        public GameService(GameDbManager gameDbManager)
+        public GameService(GameDbManager gameDbManager, RemoteDbManager remoteDbManager)
         {
             myGameDbManager = gameDbManager;
+            myRemoteDbManager = remoteDbManager;
         }
 
         public void AddAttackToDb(IAttack attack)
@@ -34,7 +37,7 @@ namespace KorfbalStatistics.Services
             {
                 myGameDbManager.AddGoal(attack.Goal);
             }
-
+            // TODO myRemoteDbManager.InsertAttack(attack);
         }
 
         public void RemoveAttackFromDb(IAttack attack)

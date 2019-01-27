@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KorfbalStatistics.Interface;
+using KorfbalStatistics.RemoteDb;
 using SQLite;
 
 namespace KorfbalStatistics.Model
@@ -9,57 +10,59 @@ namespace KorfbalStatistics.Model
     public class PlayerDbManager : IPlayerDbManager
     {
         private SQLiteConnection myDbConnection;
+        private PlayerRemoteDbManager myRemoteDb;
 
-        public PlayerDbManager(SQLiteConnection connection)
+        public PlayerDbManager(SQLiteConnection connection, PlayerRemoteDbManager playerRemoteManager)
         {
             myDbConnection = connection;
+            myRemoteDb = playerRemoteManager;
         }
 
         public DbPlayer GetPlayerById(Guid playerId)
         {
             if (playerId == Guid.Empty)
                 return new DbPlayer { Id = Guid.Empty, Abbrevation = "-", Name = "-" };
-            return myDbConnection.Table<DbPlayer>().FirstOrDefault(p => p.Id.Equals(playerId));
+            var localPlayer = myDbConnection.Table<DbPlayer>().FirstOrDefault(p => p.Id.Equals(playerId));
+            if (localPlayer != null)
+                return localPlayer;
+
+            var remotePlayer = myRemoteDb.GetPlayerById(playerId);
+            // TODO
+            return remotePlayer;
         }
         public DbPlayer[] GetPlayersForTeamId(Guid teamId)
         {
-            var allPlayers = myDbConnection.Table<DbPlayer>().ToArray();
-            return allPlayers;
-        }
+            var localPlayers = myDbConnection.Table<DbPlayer>().Where(p => p.TeamId == teamId && !p.IsSynchronised).ToList();
+            var remotePlayers = myRemoteDb.GetPlayersForTeamId(teamId).ToList();
+            var allPlayers = new List<DbPlayer>();
 
-        public Guid GetTeamIdByUserId(Guid userId)
-        {
-            DbPlayer teamIdPlayer = myDbConnection.Table<DbPlayer>().FirstOrDefault(p => p.Id.Equals(userId));
-            DbCoach teamIdCoach = myDbConnection.Table<DbCoach>().FirstOrDefault(c => c.Id.Equals(userId));
+            myDbConnection.DeleteAll<DbPlayer>();
 
-            if (teamIdCoach == null && teamIdPlayer == null)
-                return Guid.Empty;
+            allPlayers.AddRange(remotePlayers);
+            allPlayers.AddRange(localPlayers);
 
-            return teamIdPlayer == null ? teamIdCoach.TeamId : teamIdPlayer.TeamId;
+            foreach (var player in allPlayers)
+            {
+                myDbConnection.InsertOrReplace(player);
+            }
+
+            return allPlayers.ToArray();
         }
 
         public void UpdatePlayer(DbPlayer player)
         {
             myDbConnection.Update(player);
+            myRemoteDb.UpdatePlayer(player);
         }
          
         public void AddPlayer(DbPlayer player)
         {
             myDbConnection.Insert(player);
+            myRemoteDb.AddPlayer(player);
         }
         public void RemovePlayer(DbPlayer player)
         {
             myDbConnection.Delete(player);
-        }
-
-        public DbTeam GetTeamByUSerId(Guid userId)
-        {
-            Guid teamId = GetTeamIdByUserId(userId);
-            if (teamId == Guid.Empty)
-                return null;
-            var teams = myDbConnection.Table<DbTeam>();
-            return teams.FirstOrDefault(t => t.Id == teamId);
-           
         }
 
         internal Player GetUnkownPlayer()

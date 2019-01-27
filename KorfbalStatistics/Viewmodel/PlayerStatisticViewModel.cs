@@ -110,6 +110,11 @@ namespace KorfbalStatistics.Viewmodel
 
         public void SetAttacks()
         {
+            myGoals.Clear();
+            myAssist.Clear();
+            myRebounds.Clear();
+            myShots.Clear();
+            myAttacks.Clear();
             var db = DbManager.Instance.PlayerDbManager;
             Guid gameId = MainViewModel.Instance.CurrentGame.Id;
             myGoals.AddRange(db.GetGoalsForPlayerByGame(PlayerId, gameId));

@@ -19,7 +19,7 @@ namespace KorfbalStatistics.Viewmodel
         public FormationViewModel(FormationDbManager formationDbManager)
         {
             myGame = MainViewModel.Instance.CurrentGame;
-            Guid teamId = DbManager.Instance.PlayerDbManager.GetTeamIdByUserId(MainViewModel.Instance.LoggedInUser.Id);
+            Guid teamId = MainViewModel.Instance.Team.Id;
             Players.AddRange(ServiceLocator.GetService<PlayersService>().GetPlayersForTeamId(teamId));
             myFormationDbManager = formationDbManager;
         }

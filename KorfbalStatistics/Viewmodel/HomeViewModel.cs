@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using KorfbalStatistics.Interface;
 using KorfbalStatistics.Model;
+using KorfbalStatistics.RemoteDb;
 
 namespace KorfbalStatistics.Viewmodel
 {
@@ -15,11 +16,14 @@ namespace KorfbalStatistics.Viewmodel
         }
 
         private IGameDbManager myGameDbManager { get; set; }
-        
+
         public void GetGames()
         {
             Games.Clear();
-            Games.AddRange(myGameDbManager.GetGames());
+            var games = myGameDbManager.GetGamesForTeam(MainViewModel.Instance.Team.Id);
+            if (games == null)
+                return;
+            Games.AddRange(games);
             OnPropertyChanged(nameof(Games));
         }
 
@@ -29,7 +33,7 @@ namespace KorfbalStatistics.Viewmodel
             {
                 Id = Guid.NewGuid(),
                 Opponent = opponent,
-                TeamId = myGameDbManager.GetTeamIdByUserId(MainViewModel.Instance.LoggedInUser.Id),
+                TeamId = MainViewModel.Instance.Team.Id,
                 IsHome = isHome,
                 Status = "H1",
                 Date = date

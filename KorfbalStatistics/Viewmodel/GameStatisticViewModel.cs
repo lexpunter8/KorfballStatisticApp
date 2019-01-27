@@ -156,6 +156,11 @@ namespace KorfbalStatistics.Viewmodel
             else return null;
         }
 
+        internal void SaveToRemoteDb()
+        {
+            myDbManager.RemoteDbManager.InsertGameData(Game);
+        }
+
         internal void Init()
         {
             OnPropertyChanged("UpdateAll");

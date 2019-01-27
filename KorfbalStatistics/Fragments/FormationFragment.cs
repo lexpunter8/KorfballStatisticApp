@@ -45,7 +45,9 @@ namespace KorfbalStatistics.Fragments
 
         private void FormationButton_Click(object sender, EventArgs e)
         {
-            myVieWModel.SaveFormation();
+            bool saved = myVieWModel.SaveFormation();
+            if (!saved)
+                return;
             GameStatisticsFragment newFragment = new GameStatisticsFragment();
             var trans = Activity.FragmentManager.BeginTransaction();
             trans.Replace(Resource.Id.fragmentContainer, newFragment);

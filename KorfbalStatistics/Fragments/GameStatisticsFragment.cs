@@ -100,6 +100,7 @@ namespace KorfbalStatistics.Fragments
 
         private void EndHalfButton_Clicked(object sender, EventArgs e)
         {
+            myViewModel.SaveToRemoteDb();
             string currentStatus = myViewModel.Game.Status;
             string newStatus = "";
             if (currentStatus == "H1")

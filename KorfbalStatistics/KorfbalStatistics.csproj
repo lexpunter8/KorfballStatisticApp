@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
@@ -74,6 +75,7 @@
     <Compile Include="Command\ShotclockoverrideCommand.cs" />
     <Compile Include="Command\ShotCommand.cs" />
     <Compile Include="Command\TurnoverCommand.cs" />
+    <Compile Include="CustomExtensions\Attributes.cs" />
     <Compile Include="CustomExtensions\EnumDescriptionExtension.cs" />
     <Compile Include="CustomviewClasses\ItemHolderRadioButton.cs" />
     <Compile Include="CustomviewClasses\ItemIdHolderRadioGroup.cs" />
@@ -97,9 +99,11 @@
     <Compile Include="Interface\IGameDbManager.cs" />
     <Compile Include="Interface\IDbObjects.cs" />
     <Compile Include="Interface\IGameService.cs" />
+    <Compile Include="Interface\IRemoteDbManager.cs" />
     <Compile Include="Interface\IStatisticCommand.cs" />
     <Compile Include="Interface\IStatisticViewModel.cs" />
     <Compile Include="LocalDbModels\DataBase.cs" />
+    <Compile Include="LocalDbModels\UserDbManager.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Attack.cs" />
     <Compile Include="Model\DbManager.cs" />
@@ -108,9 +112,17 @@
     <Compile Include="Model\FormationDbManager.cs" />
     <Compile Include="Model\GameDbManager.cs" />
     <Compile Include="Interface\IPlayerDbManager.cs" />
+    <Compile Include="Interface\IFormationDbManager.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerDbManager.cs" />
     <Compile Include="PlayersActivity.cs" />
+    <Compile Include="ProducerConsumer\Consumer.cs" />
+    <Compile Include="RemoteDb\BaseRemoteDbManager.cs" />
+    <Compile Include="RemoteDb\FormationRemoteDbManager.cs" />
+    <Compile Include="RemoteDb\GameRemoteDbManager.cs" />
+    <Compile Include="RemoteDb\PlayerRemoteDbManager.cs" />
+    <Compile Include="RemoteDb\RemoteDbManager.cs" />
+    <Compile Include="RemoteDb\UserRemoteDbManager.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContextManager.cs" />
@@ -179,6 +191,9 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView">
       <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.MySql.Data">
+      <Version>1.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

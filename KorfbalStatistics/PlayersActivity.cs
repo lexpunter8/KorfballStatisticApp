@@ -81,9 +81,11 @@ namespace KorfbalStatistics
             builder.SetView(view)
                 .SetPositiveButton("OK", (s, args) =>
                 {
+                    player.Id = Guid.NewGuid();
                     player.Name = playerName.Text;
                     player.Abbrevation = abbrevationName.Text;
                     player.Number = Convert.ToInt16(numberName.Text);
+                    player.TeamId = MainViewModel.Instance.Team.Id;
                     if (newPlayer)
                         myViewModel.AddPlayer(player);
                     else

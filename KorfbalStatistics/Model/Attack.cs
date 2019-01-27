@@ -45,7 +45,7 @@ namespace KorfbalStatistics.Model
 
         public void ShotclockOverride(bool v)
         {
-            DbAttack.IsSchotClockOverride = v;
+            DbAttack.IsShotClockOverride = v;
         }
 
         public void Turnover(Guid playerId)

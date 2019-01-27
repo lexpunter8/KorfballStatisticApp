@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KorfbalStatistics.Interface;
+using KorfbalStatistics.RemoteDb;
 using SQLite;
 using static KorfbalStatistics.Model.Enums;
 
@@ -9,19 +10,37 @@ namespace KorfbalStatistics.Model
 {
     public class GameDbManager : IGameDbManager
     {
-        public GameDbManager(SQLiteConnection connection)
+        public GameDbManager(SQLiteConnection connection, GameRemoteDbManager gameRemoteDbManager)
         {
             myDbConnection = connection;
+            myRemoteDb = gameRemoteDbManager;
         } 
         public void AddGame(DbGame game)
         {
             myDbConnection.Insert(game);
+            myRemoteDb.AddGame(game);
         }
-        public DbGame[] GetGames()
+        public DbGame[] GetGamesForTeam(Guid teamId)
         {
-           return  myDbConnection.Table<DbGame>().ToArray();
+            var localGames = new List<DbGame>(myDbConnection.Table<DbGame>().Where(dbg => dbg.TeamId.Equals(teamId) && !dbg.IsSynchronised));
+            var remoteGames = new List<DbGame>(myRemoteDb.GetGamesForTeam(teamId));
+            var games = new List<DbGame>();
+
+            myDbConnection.DeleteAll<DbGame>();
+
+            games.AddRange(remoteGames);
+            games.AddRange(localGames);
+
+            foreach (var remoteGame in remoteGames)
+            {
+                myDbConnection.InsertOrReplace(remoteGame);
+            }
+
+            return games.ToArray();
         }
         private SQLiteConnection myDbConnection { get; set; }
+
+        private GameRemoteDbManager myRemoteDb;
 
         public Guid GetTeamIdByUserId(Guid userId)
         {
@@ -74,7 +93,8 @@ namespace KorfbalStatistics.Model
 
         public DbAttack[] GetAttacksForGame(Guid id)
         {
-            return myDbConnection.Table<DbAttack>().Where(a => a.GameId == id).ToArray();
+            var localAttacks = myDbConnection.Table<DbAttack>().Where(a => a.GameId == id).ToArray();
+            return localAttacks;
             return myDbConnection.Query<DbAttack>("" +
                 "SELECT * FROM Attack WHERE Id = ?", id).ToArray();
         }

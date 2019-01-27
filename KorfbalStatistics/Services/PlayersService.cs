@@ -32,11 +32,10 @@ namespace KorfbalStatistics.Services
 
         internal Player GetUnkownPlayer()
         {
-            DbPlayer unkownDbPlayer = myPlayerDbManager.GetPlayerById(Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d"));
             return new Player
             {
                 FirstName = "Onbekend",
-                Id = unkownDbPlayer.Id,
+                Id = Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d"),
                 Number = -1
             };
         }

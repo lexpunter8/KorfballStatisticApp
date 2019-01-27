@@ -33,8 +33,8 @@ namespace KorfbalStatistics.LocalDbModels
                         connection.DropTable <DbAttackGoal>();
                         connection.DropTable <DbGoalType>();
                         connection.DropTable <DbAttackRebound>();
-                        connection.DropTable <DbAttackShot>();
-
+                        connection.DropTable<DbAttackShot>();
+                    
                     }
                     connection.CreateTable<DbUser>();
                     connection.CreateTable<DbPlayer>();
@@ -48,54 +48,56 @@ namespace KorfbalStatistics.LocalDbModels
                     connection.CreateTable<DbGoalType>();
                     connection.CreateTable<DbAttackRebound>();
 
-                    Guid teamGuid = Guid.NewGuid();
-                    connection.Insert(new DbTeam { Id = teamGuid, Name = "B1" });
-                    connection.Insert(new DbCoach { Id = Guid.NewGuid(), TeamId = teamGuid, Name = "Lex Punter", Sex = "M"});
-                    Guid playerGuid1 = Guid.NewGuid();
-                    Guid playerGuid2 = Guid.NewGuid();
-                    Guid playerGuid3 = Guid.NewGuid();
-                    Guid playerGuid4 = Guid.NewGuid();
-                    Guid playerGuid5 = Guid.NewGuid();
-                    Guid playerGuid6 = Guid.NewGuid();
-                    Guid playerGuid7 = Guid.NewGuid();
-                    Guid playerGuid8 = Guid.NewGuid();
-                    Guid playerGuid9 = Guid.NewGuid();
-                    Guid playerGuid10 = Guid.NewGuid();
-                    connection.Insert(new DbPlayer { Id = playerGuid1, TeamId = teamGuid, Sex = "M", FirstName = "Jelmer", Name = "bij de Leij", Number = 1, Abbrevation = "LeJ" });
-                    connection.Insert(new DbPlayer { Id = playerGuid2, TeamId = teamGuid, Sex = "M", FirstName = "Jurjen", Name = "Veenstra", Number = 2, Abbrevation = "VeJ" });
-                    connection.Insert(new DbPlayer { Id = playerGuid3, TeamId = teamGuid, Sex = "M", FirstName = "Marten", Name = "van Houten", Number = 3, Abbrevation = "HuM" });
-                    connection.Insert(new DbPlayer { Id = playerGuid4, TeamId = teamGuid, Sex = "M", FirstName = "Julian", Name = "Punter", Number = 4, Abbrevation = "PuJ" });
-                    connection.Insert(new DbPlayer { Id = playerGuid5, TeamId = teamGuid, Sex = "M", FirstName = "Bas", Name = "Haaijer", Number = 5, Abbrevation = "HaB" });
-                    connection.Insert(new DbPlayer { Id = playerGuid6, TeamId = teamGuid, Sex = "F", FirstName = "Lionne", Name = "Haaijer", Number = 6, Abbrevation = "HaL" });
-                    connection.Insert(new DbPlayer { Id = playerGuid7, TeamId = teamGuid, Sex = "F", FirstName = "Maaike", Name = "van der Schuit", Number = 7, Abbrevation = "ScM" });
-                    connection.Insert(new DbPlayer { Id = playerGuid8, TeamId = teamGuid, Sex = "F", FirstName = "Maike", Name = "de Jong", Number = 8, Abbrevation = "JoM" });
-                    connection.Insert(new DbPlayer { Id = playerGuid9, TeamId = teamGuid, Sex = "F", FirstName = "Aniek", Name = "Hansma", Number = 9, Abbrevation = "HaA" });
-                    connection.Insert(new DbPlayer { Id = playerGuid10, TeamId = teamGuid, Sex = "F", FirstName = "Fardau", Name = "van Houten", Number = 10, Abbrevation = "HuF" });
-                    connection.Insert(new DbPlayer { Id = Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d"), TeamId = Guid.Empty, Sex = "U", FirstName = "Onbekend", Number = -1, Abbrevation = "" });
-                    connection.Insert(new DbPlayer { Id = Guid.Parse("4aeab093-8e88-4b41-aa4d-1aa41ba7a8fd"), TeamId = Guid.Empty, Sex = "U", FirstName = "Tegenstander", Number = -1, Abbrevation = "OPP" });
-
-                    Guid gameId = Guid.NewGuid();
-                    connection.Insert(new DbGame { Id = gameId, TeamId = teamGuid, Status = "H1",
-                        Opponent = "TestOpponent", IsHome = true, Date = DateTime.Now });
-
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid1, StartFunction = "A", CurrentFunction = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid2, StartFunction = "A", CurrentFunction = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid3, StartFunction = "A", CurrentFunction = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid4, StartFunction = "A", CurrentFunction = "A" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid5, StartFunction = "D", CurrentFunction = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid6, StartFunction = "D", CurrentFunction = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid7, StartFunction = "D", CurrentFunction = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid8, StartFunction = "D", CurrentFunction = "D" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid9, StartFunction = "S", CurrentFunction = "S" });
-                    connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid10, StartFunction = "S",  CurrentFunction = "S" });
-
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("b8ba5726-b2bb-4ab8-a52f-fd041fcb0d85"), Name = "Kleine kans" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("d8a3a228-94df-4060-af95-8f6a1a1bf93c"), Name = "Kort schot" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("9ae1c88c-4469-4ad9-a65d-40a825696672"), Name = "Afstandschot" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("4d70f737-d787-43fb-b9c8-2ed40049f555"), Name = "Doorloopbal" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("4d2eade7-ebdb-441a-bd52-896d9dfb4a80"), Name = "Vrijebal" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("5dc42cda-3613-498c-b5e1-4f2936dd0be7"), Name = "Strafworp" });
-                    connection.Insert(new DbGoalType { Id = Guid.Parse("51273c25-8193-4ea1-9145-de9648700b00"), Name = "Onbekend" });
+//                    Guid teamGuid = Guid.NewGuid();
+                    //connection.Insert(new DbTeam { Id = teamGuid, Name = "B1" });
+                    //connection.Insert(new DbCoach { Id = Guid.NewGuid(), TeamId = teamGuid, Name = "Lex Punter", Sex = "M"});
+                    //Guid playerGuid1 = Guid.NewGuid();
+                    //Guid playerGuid2 = Guid.NewGuid();
+                    //Guid playerGuid3 = Guid.NewGuid();
+                    //Guid playerGuid4 = Guid.NewGuid();
+                    //Guid playerGuid5 = Guid.NewGuid();
+                    //Guid playerGuid6 = Guid.NewGuid();
+                    //Guid playerGuid7 = Guid.NewGuid();
+                    //Guid playerGuid8 = Guid.NewGuid();
+                    //Guid playerGuid9 = Guid.NewGuid();
+                    //Guid playerGuid10 = Guid.NewGuid();
+                    //connection.Insert(new DbPlayer { Id = playerGuid1, TeamId = teamGuid, Sex = "M", FirstName = "Jelmer", Name = "bij de Leij", Number = 1, Abbrevation = "LeJ" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid2, TeamId = teamGuid, Sex = "M", FirstName = "Jurjen", Name = "Veenstra", Number = 2, Abbrevation = "VeJ" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid3, TeamId = teamGuid, Sex = "M", FirstName = "Marten", Name = "van Houten", Number = 3, Abbrevation = "HuM" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid4, TeamId = teamGuid, Sex = "M", FirstName = "Julian", Name = "Punter", Number = 4, Abbrevation = "PuJ" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid5, TeamId = teamGuid, Sex = "M", FirstName = "Bas", Name = "Haaijer", Number = 5, Abbrevation = "HaB" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid6, TeamId = teamGuid, Sex = "F", FirstName = "Lionne", Name = "Haaijer", Number = 6, Abbrevation = "HaL" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid7, TeamId = teamGuid, Sex = "F", FirstName = "Maaike", Name = "van der Schuit", Number = 7, Abbrevation = "ScM" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid8, TeamId = teamGuid, Sex = "F", FirstName = "Maike", Name = "de Jong", Number = 8, Abbrevation = "JoM" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid9, TeamId = teamGuid, Sex = "F", FirstName = "Aniek", Name = "Hansma", Number = 9, Abbrevation = "HaA" });
+                    //connection.Insert(new DbPlayer { Id = playerGuid10, TeamId = teamGuid, Sex = "F", FirstName = "Fardau", Name = "van Houten", Number = 10, Abbrevation = "HuF" });
+                    //connection.Insert(new DbPlayer { Id = Guid.Parse("6467eac9-0164-4041-adc6-4b7b038c1a7d"), TeamId = Guid.Empty, Sex = "U", FirstName = "Onbekend", Number = -1, Abbrevation = "" });
+                    //connection.Insert(new DbPlayer { Id = Guid.Parse("4aeab093-8e88-4b41-aa4d-1aa41ba7a8fd"), TeamId = Guid.Empty, Sex = "U", FirstName = "Tegenstander", Number = -1, Abbrevation = "OPP" });
+                    //
+                   //Guid gameId = Guid.Parse("59c2bb37-eaad-4f5c-8760-ed00aa349a85");
+                   //connection.Insert(new DbGame { Id = gameId, TeamId = teamGuid, Status = "H1",
+                   //   Opponent = "TestOpponent", IsHome = true, Date = DateTime.Now });
+                   //var newAttack = new DbAttack { GameId = gameId, Id = Guid.NewGuid(), IsShotClockOverride = true };
+                   //connection.Insert(newAttack);
+                   //
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid1, StartFunction = "A", CurrentFunction = "A" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid2, StartFunction = "A", CurrentFunction = "A" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid3, StartFunction = "A", CurrentFunction = "A" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid4, StartFunction = "A", CurrentFunction = "A" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid5, StartFunction = "D", CurrentFunction = "D" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid6, StartFunction = "D", CurrentFunction = "D" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid7, StartFunction = "D", CurrentFunction = "D" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid8, StartFunction = "D", CurrentFunction = "D" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid9, StartFunction = "S", CurrentFunction = "S" });
+                   //connection.Insert(new DbFormation { Id = Guid.NewGuid(), GameId = gameId, PlayerId = playerGuid10, StartFunction = "S",  CurrentFunction = "S" });
+                   //
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("b8ba5726-b2bb-4ab8-a52f-fd041fcb0d85"), Name = "Kleine kans" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("d8a3a228-94df-4060-af95-8f6a1a1bf93c"), Name = "Kort schot" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("9ae1c88c-4469-4ad9-a65d-40a825696672"), Name = "Afstandschot" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("4d70f737-d787-43fb-b9c8-2ed40049f555"), Name = "Doorloopbal" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("4d2eade7-ebdb-441a-bd52-896d9dfb4a80"), Name = "Vrijebal" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("5dc42cda-3613-498c-b5e1-4f2936dd0be7"), Name = "Strafworp" });
+                   connection.Insert(new DbGoalType { Id = Guid.Parse("51273c25-8193-4ea1-9145-de9648700b00"), Name = "Onbekend" });
                     
 
                     return true;

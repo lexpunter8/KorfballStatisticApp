@@ -1,6 +1,8 @@
 ﻿using KorfbalStatistics.Interface;
 using System;
 using SQLite;
+using System.Reflection;
+using static KorfbalStatistics.CustomExtensions.Attributes;
 
 namespace KorfbalStatistics.Model
 {
@@ -10,6 +12,7 @@ namespace KorfbalStatistics.Model
         [PrimaryKey]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        [RemoteDbName("First_Name")]
         public string FirstName { get; set; }
         [MaxLength(1)]
         public string Sex { get; set; }
@@ -21,6 +24,7 @@ namespace KorfbalStatistics.Model
     [Table("Player")]
     public class DbPlayer : DbUser
     {
+        [RemoteDbName("Team_Id")]
         public Guid TeamId { get; set; }
         public int Number { get; set; }
         public string Abbrevation { get; set; }
@@ -28,6 +32,7 @@ namespace KorfbalStatistics.Model
     [Table("Coach")]
     public class DbCoach : DbUser
     {
+        [RemoteDbName("Team_Id")]
         public Guid TeamId { get; set; }
     }
     [Table("Team")]
@@ -43,7 +48,9 @@ namespace KorfbalStatistics.Model
     {
         [PrimaryKey]
         public Guid Id { get; set; }
+        [RemoteDbName("Player_ID")]
         public Guid PlayerId { get; set; }
+        [RemoteDbName("Game_Id")]
         public Guid GameId { get; set; }
         [MaxLength(1)]
         public string CurrentFunction { get; set; }
@@ -55,6 +62,7 @@ namespace KorfbalStatistics.Model
     {
         [PrimaryKey]
         public Guid Id { get; set; }
+        [RemoteDbName("Team_Id")]
         public Guid TeamId { get; set; }
         public string Opponent { get; set; }
         public DateTime Date { get; set; }
@@ -65,9 +73,11 @@ namespace KorfbalStatistics.Model
     [Table("AttackShot")]
     public class DbAttackShot
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public Guid Id { get; set; }
+        [RemoteDbName("Attack_Id")]
         public Guid AttackId { get; set; }
+        [RemoteDbName("Player_Id")]
         public Guid PlayerId { get; set; }
         public int Count { get; set; }
         public bool IsSynchronised { get; set; }
@@ -77,10 +87,13 @@ namespace KorfbalStatistics.Model
     {
         [PrimaryKey]
         public Guid Id { get; set; }
+        [RemoteDbName("Goal_Id")]
         public Guid? GoalId { get; set; }
+        [RemoteDbName("Turnover_Player_Id")]
         public Guid? TurnoverPlayerId { get; set; }
+        [RemoteDbName("Game_Id")]
         public Guid GameId { get; set; }
-        public bool IsSchotClockOverride { get; set; }
+        public bool IsShotClockOverride { get; set; }
         public bool IsOpponentAttack { get; set; }
         public string ZoneStartFunction { get; set; } // A/D
         public bool IsFirstHalf { get; set; }
@@ -91,8 +104,11 @@ namespace KorfbalStatistics.Model
     {
         [PrimaryKey]
         public Guid Id { get; set; }
+        [RemoteDbName("GoalType_Id")]
         public Guid GoalTypeId { get; set; }
+        [RemoteDbName("Player_Id")]
         public Guid PlayerId { get; set; }
+        [RemoteDbName("Assist_Player_Id")]
         public Guid AssistPlayerId { get; set; }
         public bool IsSynchronised { get; set; }
     }
@@ -109,7 +125,9 @@ namespace KorfbalStatistics.Model
     {
         [PrimaryKey, AutoIncrement]
         public Guid Id { get; set; }
+        [RemoteDbName("Attack_Id")]
         public Guid AttackId { get; set; }
+        [RemoteDbName("Player_Id")]
         public Guid PlayerId { get; set; }
         public int Count { get; set; }
         public bool IsSynchronised { get; set; }

@@ -22,7 +22,7 @@ namespace KorfbalStatistics.Viewmodel
             {
 
                 PlayersService service = ServiceLocator.GetService<PlayersService>();
-                Players.AddRange(service.GetPlayersForTeamId(MainViewModel.Instance.LoggedInUser.Id));
+                Players.AddRange(service.GetPlayersForTeamId(MainViewModel.Instance.Team.Id));
             }
             catch (Exception e)
             {
